@@ -1,8 +1,10 @@
 import CalendarComponet from "../componets/CalendarComponet";
+import Navbar from "../componets/Navbar";
+
 function HomePage() {
     return (
         <div className="App">
-            <h1>Home Page</h1>
+
             <CalendarComponet />
 
         </div>);

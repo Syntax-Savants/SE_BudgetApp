@@ -4,24 +4,46 @@ import React, { useState } from 'react';
 import "./Calendar.css"
 
 function CalendarComponet() {
-    const currentDate = new Date();
 
-    const [value, onChange] = useState(currentDate);
+    const [currentDate, changeDate] = useState(new Date());
 
+    function getNextDate() {
+
+        changeDate(new Date(currentDate.setMonth(currentDate.getMonth() +1)));
+    }
+    function getPrevDate() {
+
+        changeDate(new Date(currentDate.setMonth(currentDate.getMonth() -1)));
+    }
     return (
         <div className="Sample">
-            <h1>{getMonthName(currentDate.getMonth())}</h1>
+
+            <button onClick={getPrevDate}> {"<"} </button >
+            <button onClick={getNextDate}> {">"} </button >
+
+            <h1>{getMonthName(currentDate.getMonth()).toUpperCase()}</h1>
             <div className="Sample__container">
                 <main className="Sample__container__content">
 
-                    <Calendar tileClassName={tileClassName} showNavigation={false} />
+                    <Calendar activeStartDate={currentDate} onActiveStartDateChange={tileClassName} formatShortWeekday={(d, a) => formatWeekday(d, a)} formatWeekday={(d, a) => formatWeekday(d, a)} tileClassName={tileClassName} showNavigation={false} />
 
                 </main>
             </div>
         </div>
+
+
     );
 
 } export default CalendarComponet;
+
+
+function formatWeekday(loc, day) {
+
+    return (
+        day.toLocaleDateString(loc, { weekday: 'long' })
+
+    )
+}
 function tileClassName({ date, view }) {
     const value = new Date();
 
