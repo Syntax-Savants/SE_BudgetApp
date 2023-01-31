@@ -1,19 +1,50 @@
+
+import LoginComponent from "../componets/LoginComponet";
+import LogoComponet from "../componets/LogoComponet";
+
+import "./LoginPage.css"
 function LoginPage() {
 
     return (
-        <div>
-            <h1>Login</h1>
 
-            <form>
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
 
-                <button>Login</button>
-            </form>
+        <div style={{height: "100vh"}}>
+
+
+            <LoginComponent />
+            <LoginDecor />
         </div>
 
 
 
+    );
+}
+
+function LoginDecor() {
+    return <div className="login-decor-container">
+        <DecorCircle color={"#6CB134"} x={0} y={40} size={150} />
+        <DecorCircle color={"#4CA7D5"} x={170} y={20} size={125} />
+        <DecorCircle color={"#F7D149"} x={150} y={250} size={190} />
+
+    </div>
+}
+
+function DecorCircle({ x, y, size, color }) {
+
+    return (
+        <div
+            className="login-decor"
+
+            top={y}
+            left={x}
+            style={{ backgroundColor: color, width: size, height: size, top: y, left: x }}>
+
+
+
+
+
+
+        </div>
     );
 }
 
