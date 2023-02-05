@@ -5,10 +5,10 @@ import com.SyntaxSavants.BudgetApp.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 //controller to communicate app health to web page
 @RestController
 public class Controller{
@@ -21,6 +21,12 @@ public class Controller{
         return "Endpoint met"; //postman test
     }
 
+    @GetMapping("/user")
+    public ResponseEntity<Iterable<User>> getUser() {
+        List<User> users = userRepository.findAll();
+
+        return new ResponseEntity(users, HttpStatus.OK);
+    }
     @PostMapping("/user")
     public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) {
         User u = new User();
