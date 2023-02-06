@@ -20,7 +20,8 @@ export function tileClassName({ date, view }) {
     // Add class to tiles in month view only
     if (view === 'month') {
         // Check if a date React-Calendar wants to check is on the list of dates to add class to
-        if (date.getMonth() != value.getMonth()) {
+        if (date.getMonth() != value.getMonth() || date.getFullYear()!= value.getFullYear()) {
+
             return 'tile last';
         }
         if (isSameDay(date, value))
