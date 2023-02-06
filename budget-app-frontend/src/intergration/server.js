@@ -1,3 +1,8 @@
-function user () {
-    fetch(url ,"https://private-anon-923fae40f3-syntaxsavants.apiary-mock.com/user" ).then(console.log)
-}
+
+export const user = async () => {
+    const response = await fetch('http://localhost:8080/user');
+    return response;
+};
+
+
+
