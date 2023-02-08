@@ -7,12 +7,22 @@ import { useNavigate } from 'react-router-dom';
 
 
 function LoginComponent() {
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const username = event.target.username.value;
         const password = event.target.password.value;
-        login(username, password);
+
+
+
+        // if vaild
+
+        //change page to home
+        navigate('/home');
+
+        // else display message incorrect username or password
 
         event.target.reset();
     };
@@ -38,15 +48,12 @@ function LoginComponent() {
 
 
 function login(username, password) {
+
+
     //login
     Server.Login(username, password);
+
     console.log('Logining in to ' + username);
 
-
-    // if vaild
-
-    //change page to home
-
-    // else display message incorrect username or password
-
+    return true;
 }
