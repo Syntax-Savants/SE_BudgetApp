@@ -1,9 +1,16 @@
 
 .Sample input,
-.Sample button {
-    font: inherit;
+
+.cycler {
+    display: inline-block;
 }
 
+.cyclerButton{
+    border-width: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    display: inline-block;
+}
 .Sample header {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -40,7 +47,8 @@
 
 .Sample__container__content {
     display: flex;
-    max-width: 100%;
+    max-width: 50%;
+    float: right;
     flex-basis: 420px;
     flex-direction: column;
     flex-grow: 100;

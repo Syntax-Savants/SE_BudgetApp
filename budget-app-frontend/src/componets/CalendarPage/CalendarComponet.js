@@ -2,7 +2,7 @@
 import Calendar from 'react-calendar';
 import React, { useState } from 'react';
 import "./Calendar.css"
-import * as utils from '../utils/CalenderHelper.js';
+import * as utils from '../../utils/CalenderHelper.js';
 
 function CalendarComponet() {
 
@@ -19,13 +19,10 @@ function CalendarComponet() {
     return (
         <div className="Sample">
 
-            <button onClick={cycleToPrevMonth}> {"<"} </button >
-            <button onClick={cycleToNextMonth}> {">"} </button >
 
-            <h1>{utils.getMonthName(activeDate.getMonth()).toUpperCase() + " " + activeDate.getFullYear()} </h1>
             <div className="Sample__container">
                 <main className="Sample__container__content">
-
+                    <CalendarCycler date={activeDate} nextMonth={cycleToNextMonth} prevMonth={cycleToPrevMonth} />
                     <Calendar
                         activeStartDate={activeDate}
                         pnActiveStartDateChange={utils.tileClassName}
@@ -40,7 +37,23 @@ function CalendarComponet() {
 
     );
 
-} export default CalendarComponet;
+}
+
+function CalendarCycler({ date, nextMonth, prevMonth }) {
+
+
+    return (<div className='cycler'>
+
+        <button className='cyclerButton' onClick={nextMonth}> {"<"} </button >
+
+        <h1 style={{ display: 'inline-block' }}>{utils.getMonthName(date.getMonth()).toUpperCase() + " " + date.getFullYear()} </h1>
+        <button className='cyclerButton' onClick={prevMonth}> {">"} </button >
+
+    </div>);
+}
+
+
+export default CalendarComponet;
 
 
 
