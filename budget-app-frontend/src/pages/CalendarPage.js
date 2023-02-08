@@ -6,7 +6,6 @@ import Navbar from "../componets/Navbar";
 function CalendarPage() {
     return (
         <div className="App" style={{height: '100%'}}>
-            <CalendarPageSideBar/>
             <CalendarComponet />
 
         </div>);
