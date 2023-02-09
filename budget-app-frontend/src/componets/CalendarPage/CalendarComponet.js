@@ -44,10 +44,10 @@ function CalendarCycler({ date, nextMonth, prevMonth }) {
 
     return (<div className='cycler'>
 
-        <button className='cyclerButton' onClick={nextMonth}> {"<"} </button >
+        <button className='cyclerButton' onClick={prevMonth}> {"<"} </button >
 
         <h1 style={{ display: 'inline-block' }}>{utils.getMonthName(date.getMonth()).toUpperCase() + " " + date.getFullYear()} </h1>
-        <button className='cyclerButton' onClick={prevMonth}> {">"} </button >
+        <button className='cyclerButton' onClick={nextMonth}> {">"} </button >
 
     </div>);
 }
