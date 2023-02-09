@@ -27,7 +27,6 @@ function LoginComponent() {
         event.target.reset();
     };
     return (
-        <div>
             <div className="login-container">
                 <h1 className="login-header">Login to your personal budget</h1>
                 <form className="login-form" onSubmit={handleSubmit}>
@@ -42,7 +41,6 @@ function LoginComponent() {
                     <button className='login-button'> Login</button>
                 </form>
             </div>
-        </div>
     );
 } export default LoginComponent;
 

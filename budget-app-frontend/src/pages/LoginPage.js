@@ -1,6 +1,7 @@
 
 import LoginComponent from "../componets/LoginComponet";
 import LogoComponet from "../componets/LogoComponet";
+import Navbar from "../componets/Navbar";
 
 import "./LoginPage.css"
 function LoginPage() {
@@ -8,11 +9,15 @@ function LoginPage() {
     return (
 
 
-        <div style={{height: "100vh"}}>
+        <div style={{ height: "100vh" }}>
 
 
-            <LoginComponent />
-            <LoginDecor />
+            <Navbar logged={false} />
+            <div className="login-page">
+                <LoginComponent />
+
+                <LoginDecor />
+            </div>
         </div>
 
 

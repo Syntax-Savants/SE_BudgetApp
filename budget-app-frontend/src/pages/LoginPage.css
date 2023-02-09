@@ -6,18 +6,21 @@
 }
 
 .login-decor-container {
-    position: absolute;
     float: right;
-    overflow: hidden;
+    position: relative;
+
     width: 500px;
-    height: 100%;
-    top: 0;
-    left: 50%;
+    height: 30rem;
     margin-left: 10%;
+    margin-right: auto;
+}
+
+.login-page {
+
+    position: relative;
 }
 
 .login-decor {
-
     border-radius: 100%;
     position: absolute;
 }
@@ -35,9 +38,12 @@
 }
 
 .login-container {
-    position: absolute;
+    display: inline-block;
+    position: relative;
     bottom: 0;
     margin: 50px;
+    margin-top: 80px;
+
     border-radius: 100%;
     background-color: #F0F0F0;
     padding: 100px;
