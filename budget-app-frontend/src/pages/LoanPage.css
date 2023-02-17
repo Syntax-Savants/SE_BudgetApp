@@ -1,0 +1,47 @@
+.loan-form {
+    background-color: #F0F0F0;
+    display: inline-block;
+    padding: 4rem;
+    border: black solid 1px;
+
+    display: inline-block;
+}
+
+.loan-form * {
+    display: block;
+}
+
+.loan-form input {
+    margin: 10px 0;
+}
+
+.loan-subheader {
+    color: white;
+    background-color: #06AADA;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.loan-display {
+    display: inline-block;
+    margin-left: 40px;
+    vertical-align: top;
+}
+
+.loan-display-text {
+    display: flex;
+    background-color: #33826A;
+    color: white;
+    min-width: 100px;
+    min-height: 100px;
+    padding: 30px;
+    border-radius: 100%;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-self: center;
+}
+
+p{width: 100%;}

@@ -3,7 +3,7 @@ import "./Navbar.css";
 import Logo from "../img/commerce-bank-logo-2x.png"
 import { Link } from 'react-router-dom';
 
-function Navbar({ logged }) {
+function Navbar({ logged = true }) {
 
     if (logged == true) {
         return (

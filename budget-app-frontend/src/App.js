@@ -4,12 +4,13 @@ import CalendarPage from './pages/CalendarPage';
 import { Routes, Route } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
+import LoanPage from './pages/LoanPage';
 function App() {
   return (
 
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="home" element={<CalendarPage />} />
+      <Route path="home" element={<LoanPage />} />
     </Routes>);
 }
 

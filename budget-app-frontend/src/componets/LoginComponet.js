@@ -27,20 +27,20 @@ function LoginComponent() {
         event.target.reset();
     };
     return (
-            <div className="login-container">
-                <h1 className="login-header">Login to your personal budget</h1>
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <label>Username:</label>
-                    <input id='username'>
+        <div className="login-container">
+            <h1 className="login-header">Login to your personal budget</h1>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <label>Username:</label>
+                <input id='username'>
 
-                    </input>
-                    <label>Password:</label>
+                </input>
+                <label>Password:</label>
 
-                    <input id='password' type={"password"}></input>
+                <input id='password' type={"password"}></input>
 
-                    <button className='login-button'> Login</button>
-                </form>
-            </div>
+                <button className='login-button'> Login</button>
+            </form>
+        </div>
     );
 } export default LoginComponent;
 

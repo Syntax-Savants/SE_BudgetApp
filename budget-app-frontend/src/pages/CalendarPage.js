@@ -5,11 +5,14 @@ import Navbar from "../componets/Navbar";
 
 function CalendarPage() {
     return (
-        <div className="App" style={{ height: '100%' }}>
+        <div className="" style={{ height: '100%' }}>
 
             <Navbar logged={true} />
-            <CalendarComponet />
+            <div style={{margin:0, padding :0}}>
+                <CalendarPageSideBar />
 
+                <CalendarComponet />
+            </div>
         </div>);
 }
 

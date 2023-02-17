@@ -1,20 +1,27 @@
-
 .Sample input,
 
 .cycler {
     display: inline-block;
 }
 
-.cyclerButton{
+.cyclerButton {
     border-width: 0;
     font-size: 2rem;
     background-color: transparent;
     display: inline-block;
 }
+
 .Sample header {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
+
+
+.Sample {
+    width: 80%;
+    display: inline-block;
+}
+
 
 .Sample header h1 {
     font-size: inherit;
@@ -22,16 +29,14 @@
 }
 
 .Sample__container {
-    display: flex;
+    text-align: center;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: 10px 0;
-    padding: 10px;
+
 }
 
 .Sample__container>*>* {
-    margin: 10px;
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -40,21 +45,19 @@
     text-decoration: none !important;
 }
 
-.react-calendar__month-view__weekdays__weekday >abbr{
+.react-calendar__month-view__weekdays__weekday>abbr {
     text-transform: uppercase !important;
     text-decoration: none !important;
 }
 
 .Sample__container__content {
     display: flex;
-    max-width: 50%;
-    float: right;
+    max-width: 70%;
     flex-basis: 420px;
     flex-direction: column;
     flex-grow: 100;
     align-items: stretch;
     height: 100%;
-    padding-top: 1em;
 }
 
 .Sample__container__content .react-calendar {

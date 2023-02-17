@@ -1,7 +1,15 @@
 .CSideBar{
 background-color: red;
 height: 100vh;
-width: 20%;
+max-width: 30%;
 display: inline-block;
 margin: 0;
 position: relative;}
+
+.CSideBar-input{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    padding:100px ;
+background-color: #06AADA;
+}

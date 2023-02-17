@@ -6,7 +6,7 @@
 }
 
 .login-decor-container {
-    float: right;
+    display: inline-block;
     position: relative;
 
     width: 500px;
