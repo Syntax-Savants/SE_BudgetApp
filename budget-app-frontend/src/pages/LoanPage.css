@@ -24,6 +24,7 @@
 }
 
 .loan-display {
+    float: right;
     display: inline-block;
     margin-left: 40px;
     vertical-align: top;
@@ -33,11 +34,11 @@
     display: flex;
     background-color: #33826A;
     color: white;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 250px;
+    min-height: 250px;
     padding: 30px;
     border-radius: 100%;
-    font-size: 30px;
+    font-size: 80px;
     margin: auto;
     text-align: center;
     align-items: center;

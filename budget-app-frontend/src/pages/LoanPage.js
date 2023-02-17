@@ -23,7 +23,7 @@ export default function LoanPage() {
 
         event.target.reset();
     };
-    const [monthlyPayment, setMonthlyPayment] = useState(0);
+    const [monthlyPayment, setMonthlyPayment] = useState('$0');
 
 
     return (
@@ -36,7 +36,7 @@ export default function LoanPage() {
 
             </h2>
 
-            <div style={{ width: "1000px",margin: "auto", marginTop: "15px" }}>
+            <div style={{ width: "1000px", margin: "auto", marginTop: "15px" }}>
                 <div className="loan-form">
                     <h3> Personal Loan Estimator </h3>
                     <form style={{ display: "block" }} onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ export default function LoanPage() {
                     <p style={{ fontSize: "25px", textAlign: "center" }}> Your monthly payment is...</p>
                     <div className="loan-display-text">
 
-                        <p>${monthlyPayment}</p>
+                        <p>{monthlyPayment}</p>
 
                     </div>
                 </div>
@@ -83,10 +83,6 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
-
-        // These options are needed to round to whole numbers if that's what you want.
-        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
     });
     interestRate /= 100;
     const monthlyInterestRate = interestRate / 12;
@@ -94,6 +90,10 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
     const numerator = loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments);
     const denominator = Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1;
     const monthlyPayment = numerator / denominator;
+
+    if (isNaN(monthlyPayment))
+        return "Invaild input";
+
     return formatter.format(monthlyPayment);
 
 }
