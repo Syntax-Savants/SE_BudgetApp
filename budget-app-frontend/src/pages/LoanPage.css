@@ -24,8 +24,9 @@
 }
 
 .loan-display {
-    float: right;
     display: inline-block;
+    float: right;
+
     margin-left: 40px;
     vertical-align: top;
 }

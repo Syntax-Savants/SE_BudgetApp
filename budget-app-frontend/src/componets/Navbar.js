@@ -3,7 +3,7 @@ import "./Navbar.css";
 import Logo from "../img/commerce-bank-logo-2x.png"
 import { Link } from 'react-router-dom';
 
-function Navbar({ logged = true }) {
+function Navbar({ logged = true, hide }) {
 
     if (logged == true) {
         return (
@@ -13,8 +13,12 @@ function Navbar({ logged = true }) {
 
                 <ul className="navbar-links">
 
-                    <li><Link to="">Balance Adjustments </Link></li>
-                    <li>Personal Loan Estimator</li>
+
+                    <li><Link to="/home">Home </Link></li>
+
+                    <li><Link to="/balance">Balance Adjustments </Link></li>
+
+                    <li ><Link to="/loan">Personal Loan Estimator</Link></li>
                     <li><Link to="/">Logout</Link></li>
                 </ul>
             </nav>

@@ -18,8 +18,9 @@
 
 
 .Sample {
-    width: 80%;
     display: inline-block;
+    width: 70%;
+    vertical-align: top;
 }
 
 

@@ -15,12 +15,7 @@ export default function LoanPage() {
 
 
 
-        // if vaild
-
-        //change page to home
-
-        // else display message incorrect username or password
-
+    
         event.target.reset();
     };
     const [monthlyPayment, setMonthlyPayment] = useState('$0');

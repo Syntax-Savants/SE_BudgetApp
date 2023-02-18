@@ -5,7 +5,7 @@ export default function CalendarPageSideBar() {
         <div className="CSideBar">
 
             <div className="CSideBar-input">
-
+            <label>My Savings Goal</label>
                 <input></input>
 
             </div >
