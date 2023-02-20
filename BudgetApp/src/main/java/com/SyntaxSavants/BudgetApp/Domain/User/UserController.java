@@ -9,20 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public ResponseEntity<User> getUser(@RequestHeader String raw_auth) {
-        String[] auth = raw_auth.split(":");
-        if (auth.length != 2) {
+    @GetMapping("/user")
+    public ResponseEntity<User> getUser(@RequestHeader String auth) {
+        String[] username_and_password = auth.split(":");
+        if (username_and_password.length != 2) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        String username = auth[0];
-        String password = auth[1];
+        String username = username_and_password[0];
+        String password = username_and_password[1];
         Optional<User> user = userRepository.findById(username);
 
         if (user.isEmpty()) {
@@ -35,8 +34,8 @@ public class UserController {
 
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
-    @PostMapping("/")
-    public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) {
+    @PostMapping("/user")
+    public ResponseEntity<String> addNewUser(@RequestBody CreateUserRequest request) {
         User u = new User();
 
         u.setFirst_name(request.getFirst_name());
@@ -46,6 +45,6 @@ public class UserController {
 
         userRepository.save(u);
 
-        return new ResponseEntity("it worked", HttpStatus.OK);
+        return new ResponseEntity("Success", HttpStatus.OK);
     }
 }
