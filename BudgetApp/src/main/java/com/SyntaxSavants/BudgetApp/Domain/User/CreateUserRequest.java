@@ -1,4 +1,4 @@
-package com.SyntaxSavants.BudgetApp.Domain;
+package com.SyntaxSavants.BudgetApp.Domain.User;
 
 import lombok.Data;
 
