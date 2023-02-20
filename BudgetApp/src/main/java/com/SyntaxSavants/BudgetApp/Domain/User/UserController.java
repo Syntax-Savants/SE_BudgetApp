@@ -35,7 +35,7 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
     @PostMapping("/user")
-    public ResponseEntity<String> addNewUser(@RequestBody CreateUserRequest request) {
+    public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) {
         User u = new User();
 
         u.setFirst_name(request.getFirst_name());
@@ -45,6 +45,6 @@ public class UserController {
 
         userRepository.save(u);
 
-        return new ResponseEntity("Success", HttpStatus.OK);
+        return new ResponseEntity("it worked", HttpStatus.OK);
     }
 }
