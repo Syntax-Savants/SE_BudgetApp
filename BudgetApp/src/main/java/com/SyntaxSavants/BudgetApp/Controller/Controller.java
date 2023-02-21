@@ -13,9 +13,6 @@ import java.util.Optional;
 @RestController
 public class Controller{
 
-    @Autowired
-    private UserRepository userRepository;
-
     @GetMapping("/health")
     public String getHealthCheck(){
         return "Endpoint met"; //postman test

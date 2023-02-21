@@ -1,11 +1,16 @@
 package com.SyntaxSavants.BudgetApp.Domain.User;
 
 
+import com.SyntaxSavants.BudgetApp.Domain.Adjustment.Adjustment;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +24,8 @@ public class User {
 
     private String first_name;
     private String last_name;
+
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
+    private List<Adjustment> adjustments;
 
 }

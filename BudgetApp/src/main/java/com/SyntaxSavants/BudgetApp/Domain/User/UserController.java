@@ -1,6 +1,7 @@
 package com.SyntaxSavants.BudgetApp.Domain.User;
 
 import com.SyntaxSavants.BudgetApp.Repository.UserRepository;
+import com.SyntaxSavants.BudgetApp.Service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,21 +15,14 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private AuthenticationService authentication;
+
     @GetMapping("/user")
     public ResponseEntity<User> getUser(@RequestHeader String auth) {
-        String[] username_and_password = auth.split(":");
-        if (username_and_password.length != 2) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-        String username = username_and_password[0];
-        String password = username_and_password[1];
-        Optional<User> user = userRepository.findById(username);
+        Optional<User> user = authentication.authenticateUser(auth);
 
-        if (user.isEmpty()) {
-            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
-        }
-
-        if (user.get().getPassword().equals(password)) {
+        if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
         }
 
