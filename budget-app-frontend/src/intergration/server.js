@@ -1,20 +1,42 @@
+
+
+
 export const Login = async (username, password) => {
-    var request = new XMLHttpRequest();
-
-    request.open('GET', 'http://localhost:8080/user');
 
 
+    var response = await fetch('http://localhost:8080/user', {
+        headers: {
+            "auth":
+                `${username}:${password}`
 
-    request.setRequestHeader('auth', username + ":" + password); // Change these, leave the colon
 
-    request.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            console.log('Status:', this.status);
-            console.log('Headers:', this.getAllResponseHeaders());
-            console.log('Body:', this.responseText);
         }
-    };
+    })
+        .then(data => {
 
-    request.send();
+            if (data.status === 401) {
+                console.log("User does not exist");
 
+                return null;
+
+            }
+            return data.json();
+
+
+        })
+        .then(post => {
+            console.log(post);
+            return post;
+
+
+        }).catch(err => {
+
+            return null
+        });
+
+
+    if (response == null) {
+        return false;
+    }
+    return true;
 }
