@@ -1,5 +1,5 @@
 import DefaultPage from "./DefaultPage";
-import * as Server from "../intergration/Server"
+import * as Server from "../intergration/server"
 import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
@@ -15,32 +15,32 @@ export default function SignupPage() {
 
 
     return <div>
-    
+
         <div className="login-container">
 
-        <form onSubmit={handleSubmit} className="login-form">
+            <form onSubmit={handleSubmit} className="login-form">
 
 
-            <label>First Name:</label>
+                <label>First Name:</label>
 
-            <input id='firstName'></input>
-
-
-            <label>Last Name:</label>
-
-            <input id='lastName'></input>
+                <input id='firstName'></input>
 
 
-            <label>Username:</label>
-            <input id='username'>
+                <label>Last Name:</label>
 
-            </input>
-            <label>Password:</label>
+                <input id='lastName'></input>
 
-            <input id='password' type={"password"}></input>
 
-            <button className='login-button'> Login</button>        </form >
-    </div>
+                <label>Username:</label>
+                <input id='username'>
+
+                </input>
+                <label>Password:</label>
+
+                <input id='password' type={"password"}></input>
+
+                <button className='login-button'> Login</button>        </form >
+        </div>
 
     </div>;
 }

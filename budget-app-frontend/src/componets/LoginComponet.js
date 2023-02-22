@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 import "../pages/LoginPage.css";
-import * as Server from "../intergration/Server"
+import * as Server from "../intergration/server"
 import { useNavigate } from 'react-router-dom';
 
 
