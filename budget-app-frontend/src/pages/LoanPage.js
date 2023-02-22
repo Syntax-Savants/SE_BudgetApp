@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 
 export default function LoanPage() {
-    console.log(calculateMonthlyPayment(5000, 11.50, 36))
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -15,7 +14,7 @@ export default function LoanPage() {
 
 
 
-    
+
         event.target.reset();
     };
     const [monthlyPayment, setMonthlyPayment] = useState('$0');

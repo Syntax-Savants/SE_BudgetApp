@@ -31,7 +31,7 @@ function Navbar({ logged = true, hide }) {
             <ul className="navbar-links">
 
 
-                <li><Link to="/">Signup</Link></li>
+                <li><Link to="/signup">Signup</Link></li>
             </ul>
         </nav>
     );

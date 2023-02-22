@@ -10,6 +10,14 @@ function LoginComponent() {
     const navigate = useNavigate();
     const [error, displayError] = useState("");
 
+    //
+
+    Server.Ping().then(res => {
+
+        if (!res)
+            displayError("Cannot connect to server");
+
+    });
     const handleSubmit = (event) => {
         event.preventDefault();
 
