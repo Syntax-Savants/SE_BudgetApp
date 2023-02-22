@@ -14,6 +14,7 @@ import java.util.Optional;
 public class Controller{
 
     @GetMapping("/health")
+    @CrossOrigin
     public String getHealthCheck(){
         return "Endpoint met"; //postman test
     }

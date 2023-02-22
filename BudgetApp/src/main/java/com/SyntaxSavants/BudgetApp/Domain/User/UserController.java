@@ -19,6 +19,7 @@ public class UserController {
     private AuthenticationService authentication;
 
     @GetMapping("/user")
+    @CrossOrigin
     public ResponseEntity<User> getUser(@RequestHeader String auth) {
         Optional<User> user = authentication.authenticateUser(auth);
 
@@ -29,6 +30,7 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
     @PostMapping("/user")
+    @CrossOrigin
     public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) {
         User u = new User();
 
