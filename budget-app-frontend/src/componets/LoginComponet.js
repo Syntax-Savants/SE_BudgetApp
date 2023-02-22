@@ -18,6 +18,7 @@ function LoginComponent() {
 
 
         // if vaild
+        login(username, password);
 
         //change page to home
         navigate('/home');
