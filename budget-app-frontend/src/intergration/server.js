@@ -1,22 +1,22 @@
-import { ignoreServer, setCurrentUser } from '../Global.js';
-
+import { bypassServer, setCurrentUser } from '../Global.js';
 
 const SERVER_ADRESS = "http://localhost:8080";
 export const Ping = async () => {
-
-    if (ignoreServer)
+    if (bypassServer)
         return true;
 
     return await fetch('/health').then(d => { return true }).catch(err => { return false });
-
-
-
 }
 
 export const SignUp = async (username, password, firstName, lastName) => {
     console.log("Attempting to sign up user  " + username);
 
 
+    if (bypassServer) {
+
+
+        return;
+    }
     var request = new XMLHttpRequest();
 
     request.open('POST', locate("user"));
@@ -46,6 +46,11 @@ export const SignUp = async (username, password, firstName, lastName) => {
 export const Login = async (username, password) => {
 
 
+    if (bypassServer) {
+
+        setCurrentUser((username, password, "test", "test"));
+        return true;
+    }
     var response = await fetch(locate("user"), {
         headers: {
             "auth":
@@ -63,14 +68,10 @@ export const Login = async (username, password) => {
 
             }
             return data.json();
-
-
         })
         .then(user => {
 
-
             return user;
-
 
         }).catch(err => {
 
@@ -84,6 +85,7 @@ export const Login = async (username, password) => {
 
 
 
+    //If Login Is Not Successful
 
     if (response == null) {
         return false;
