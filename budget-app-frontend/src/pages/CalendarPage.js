@@ -6,7 +6,7 @@ import { getCurrentUser } from "../Global";
 
 function CalendarPage() {
 
-    console.log("Welcome to Calendar page " + getCurrentUser().firstName);
+    console.log("Welcome to Calendar page " + getCurrentUser());
 
     return (
         <div className="" style={{ height: '100%' }}>

@@ -1,8 +1,8 @@
 .CSideBar {
     height: 100vh;
-    max-width: 30%;
+    min-width: 20%;
     display: inline-block;
-    margin-top: 20px;
+    margin: 50px;
     position: relative;
 }
 
@@ -10,21 +10,26 @@
     text-align: center;
 
     border-radius: 100%;
-    padding: 40px;
+    padding: 10px;
     background-color: #06AADA;
+    width: 120px;
+    height: 120px;
+    
 }
-.CSideBar-input label{
+
+.CSideBar-input label {
 
     color: white;
 }
+
 .CSideBar-input * {
     display: block;
 }
 
 .CSideBar-input input {
-   width: 150px;
-   align-self: center;
-   height: 10px;
-   text-align: center;
+    width: 150px;
+    align-self: center;
+    height: 10px;
+    text-align: center;
 
 }

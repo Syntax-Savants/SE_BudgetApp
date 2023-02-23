@@ -1,9 +1,12 @@
 import { bypassServer, setCurrentUser } from '../Global.js';
+import { User } from "../class/User";
+import Cookies from 'universal-cookie';
 
 const SERVER_ADRESS = "http://localhost:8080";
+const cookies = new Cookies();
+
 export const Ping = async () => {
-    if (bypassServer)
-        return true;
+
 
     return await fetch('/health').then(d => { return true }).catch(err => { return false });
 }
@@ -45,16 +48,39 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
 export const Login = async (username, password) => {
 
-
+    var header = `${username}:${password}`;
+    var response = await getUserFromHeader(header);
     if (bypassServer) {
 
-        setCurrentUser((username, password, "test", "test"));
         return true;
     }
+
+
+    console.log(response);
+
+    //        setCurrentUser(response.username, response.first_name,response.last_name);
+
+    //If Login Is Not Successful
+    if (response == null) {
+        return false;
+    }
+
+    cookies.set('LOGIN_HEADER', header, { path: '/' });
+    console.log("Saved " + cookies.get('LOGIN_HEADER') + " to cookies");
+
+
+    setCurrentUser(response);
+
+
+    return true;
+}
+
+
+export async function getUserFromHeader(header) {
     var response = await fetch(locate("user"), {
         headers: {
             "auth":
-                `${username}:${password}`
+                header
 
 
         }
@@ -77,23 +103,15 @@ export const Login = async (username, password) => {
 
             return null
         });
-
-
-    console.log(response);
-
-    //        setCurrentUser(response.username, response.first_name,response.last_name);
-
-
-
-    //If Login Is Not Successful
-
     if (response == null) {
-        return false;
+        return null;
+
     }
-    setCurrentUser(response.username, response.first_name, response.last_name);
+    console.log(response.first_name);
+
+    return new User(response.username, response.first_name, response.last_name);
 
 
-    return true;
 }
 
 function locate(mapping) {
