@@ -5,7 +5,6 @@ import "../pages/LoginPage.css";
 import * as Server from "../intergration/server"
 import { useNavigate } from 'react-router-dom';
 
-
 function LoginComponent() {
     const navigate = useNavigate();
     const [error, displayError] = useState("");

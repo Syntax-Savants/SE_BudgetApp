@@ -2,6 +2,7 @@ import "../componets/Navbar";
 import Navbar from "../componets/Navbar";
 import "./LoanPage.css";
 import React, { useState } from 'react';
+import * as Utils from '../utils/Utils';
 
 
 export default function LoanPage() {
@@ -12,13 +13,9 @@ export default function LoanPage() {
         console.log(monthlyPayment);
         setMonthlyPayment(monthlyPayment);
 
-
-
-
         event.target.reset();
     };
     const [monthlyPayment, setMonthlyPayment] = useState('$0');
-
 
     return (
 
@@ -74,10 +71,7 @@ n = number of monthly payments (term of the loan in months)
 */
 
 function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
+
     interestRate /= 100;
     const monthlyInterestRate = interestRate / 12;
     const numberOfPayments = loanTerm;
@@ -88,6 +82,6 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
     if (isNaN(monthlyPayment))
         return "Invaild input";
 
-    return formatter.format(monthlyPayment);
+    return Utils.formatMoney(monthlyPayment);
 
 }

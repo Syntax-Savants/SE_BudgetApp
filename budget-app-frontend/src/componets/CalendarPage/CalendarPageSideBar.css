@@ -4,17 +4,46 @@
     display: inline-block;
     margin: 50px;
     position: relative;
+    margin-right: 0;
+}
+
+.my-calendars h3 {
+    text-align: center;
+    color : #33826A;
+}
+
+.my-calendars input {
+
+    width: 15px;
+    height: 15px;
+}
+
+.my-calendars label {
+    font-size: 20px;
+}
+
+
+.CSSideBar-input-display {
+    margin-top: 30%;
+    color: white;
 }
 
 .CSideBar-input {
     text-align: center;
-
+    display: inline-block;
     border-radius: 100%;
     padding: 10px;
     background-color: #06AADA;
-    width: 120px;
-    height: 120px;
-    
+    width: 160px;
+    height: 160px;
+    transition: 0.3s;
+
+
+}
+
+.CSideBar-input:hover {
+    width: 200px;
+    height: 200px;
 }
 
 .CSideBar-input label {

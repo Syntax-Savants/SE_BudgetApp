@@ -37,9 +37,6 @@ export function Day({ date, view }) {
     )
 }
 
-
-
-
 //convert month to string
 
 export function getMonthName(month) {
@@ -75,4 +72,18 @@ export function getMonthName(month) {
             return "Invalid Month";
     }
 }
+
+export function formatMoney(num) {
+
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
+    return formatter.format(num);
+
+}
+
+
+
 

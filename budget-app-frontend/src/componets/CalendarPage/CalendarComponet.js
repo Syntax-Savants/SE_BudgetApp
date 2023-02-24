@@ -2,7 +2,7 @@
 import Calendar from 'react-calendar';
 import React, { useState } from 'react';
 import "./Calendar.css"
-import * as utils from '../../utils/CalenderHelper.js';
+import * as utils from '../../utils/Utils.js';
 
 function CalendarComponet() {
 

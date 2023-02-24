@@ -47,13 +47,13 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
 
 export const Login = async (username, password) => {
-
-    var header = `${username}:${password}`;
-    var response = await getUserFromHeader(header);
     if (bypassServer) {
 
         return true;
     }
+
+    var header = `${username}:${password}`;
+    var response = await getUserFromHeader(header);
 
 
     console.log(response);
@@ -61,12 +61,14 @@ export const Login = async (username, password) => {
     //        setCurrentUser(response.username, response.first_name,response.last_name);
 
     //If Login Is Not Successful
-    if (response == null) {
+    if (response == null)
         return false;
-    }
+
 
     cookies.set('LOGIN_HEADER', header, { path: '/' });
     console.log("Saved " + cookies.get('LOGIN_HEADER') + " to cookies");
+
+    localStorage.setItem('user', JSON.stringify(response));
 
 
     setCurrentUser(response);
@@ -81,7 +83,6 @@ export async function getUserFromHeader(header) {
         headers: {
             "auth":
                 header
-
 
         }
     })
