@@ -1,0 +1,16 @@
+.balance-page-input {
+
+    color: white;
+    background-color: #13ae4b;
+    width: 250px;
+    height: 350px;
+    text-align: center;
+    display: inline-block;
+    margin: 40px;
+}
+
+.balance-page-section {
+
+    margin: auto;
+    width: fit-content;
+}

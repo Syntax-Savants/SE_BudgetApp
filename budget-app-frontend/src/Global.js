@@ -24,12 +24,15 @@ export function getCurrentUser() {
         return currentUser;
     }
 
+    console.log("Getting user from local storage");
 
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
         const foundUser = JSON.parse(loggedInUser);
         return foundUser;
     }
+
+    console.log("Getting user from cookies");
 
     Server.getUserFromHeader(cookies.get('LOGIN_HEADER')).then(user => {
         console.log(user);

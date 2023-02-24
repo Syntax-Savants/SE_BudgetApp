@@ -5,10 +5,6 @@ import * as Utils from "../../utils/Utils"
 
 export default function CalendarPageSideBar() {
 
-
-
-
-
     return (
         <div className="CSideBar">
             <div>
