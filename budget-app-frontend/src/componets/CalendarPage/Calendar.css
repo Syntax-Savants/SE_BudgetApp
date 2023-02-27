@@ -9,6 +9,18 @@
     font-size: 2rem;
     background-color: transparent;
     display: inline-block;
+    background-color: rgb(51, 130, 106);
+    color: white;
+    border-radius: 100%;
+    padding: 20px;
+    margin: 0 30px;
+    transition: 0.1s;
+
+}
+
+.cyclerButton:hover {
+    font-size: 2.2rem;
+
 }
 
 .Sample header {
@@ -37,11 +49,11 @@
 
 }
 
-.Sample__container>*>* {
-}
-
 .react-calendar__month-view__weekdays__weekday {
+    background-color: rgb(51, 130, 106);
+    color: white;
     width: 100px;
+    padding: 20px 0;
     text-transform: capitalize !important;
     text-decoration: none !important;
 }
@@ -53,7 +65,6 @@
 
 .Sample__container__content {
     display: flex;
-    max-width: 70%;
     flex-basis: 420px;
     flex-direction: column;
     flex-grow: 100;
@@ -64,6 +75,14 @@
 .Sample__container__content .react-calendar {
     margin: 0 auto;
     padding: 0 5%;
+
+}
+
+.react-calendar__viewContainer {
+
+    border-width: 2px;
+    border-color: rgb(51, 130, 106);
+    border-style: solid;
 }
 
 .tile {
@@ -73,8 +92,9 @@
     width: 100px;
     height: 100px;
     background-color: white;
-    border-width: 1px;
-    border-color: black;
+    border-width: 2px;
+    border-color: rgb(51, 130, 106);
+    border-style: solid;
 
 }
 
@@ -85,9 +105,11 @@
     right: 0;
     padding-right: 10px;
     justify-content: flex-end;
+
 }
 
 .today {
+    font-weight: bold;
     color: red;
 }
 

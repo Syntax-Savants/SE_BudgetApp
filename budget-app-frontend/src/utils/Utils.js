@@ -12,8 +12,6 @@ export function formatWeekday(loc, day) {
     )
 }
 
-
-
 export function tileClassName({ date, view }) {
     const value = new Date();
 

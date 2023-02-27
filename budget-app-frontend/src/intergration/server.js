@@ -7,9 +7,16 @@ const cookies = new Cookies();
 
 export const Ping = async () => {
 
+    let ableToConnect = await fetch(locate('health')).then(d => {
 
-    return await fetch('/health').then(d => { return true }).catch(err => { return false });
+        return true
+    }).catch(err => { return false });
+
+    console.log("Server Connection == " + ableToConnect);
+
+    return ableToConnect;
 }
+
 
 export const SignUp = async (username, password, firstName, lastName) => {
     console.log("Attempting to sign up user  " + username);
@@ -55,8 +62,8 @@ export const Login = async (username, password) => {
     var header = `${username}:${password}`;
     var response = await getUserFromHeader(header);
 
+    console.log("User from header: " + response);
 
-    console.log(response);
 
     //        setCurrentUser(response.username, response.first_name,response.last_name);
 
@@ -64,15 +71,12 @@ export const Login = async (username, password) => {
     if (response == null)
         return false;
 
-
     cookies.set('LOGIN_HEADER', header, { path: '/' });
     console.log("Saved " + cookies.get('LOGIN_HEADER') + " to cookies");
 
     localStorage.setItem('user', JSON.stringify(response));
 
-
     setCurrentUser(response);
-
 
     return true;
 }
@@ -83,7 +87,6 @@ export async function getUserFromHeader(header) {
         headers: {
             "auth":
                 header
-
         }
     })
         .then(data => {
@@ -108,10 +111,17 @@ export async function getUserFromHeader(header) {
         return null;
 
     }
-    console.log(response.first_name);
 
     return new User(response.username, response.first_name, response.last_name);
 
+
+}
+
+export function Logout() {
+    console.log("logging out");
+
+    cookies.set('LOGIN_HEADER', '', { path: '/' });
+    localStorage.setItem('user', '');
 
 }
 

@@ -11,7 +11,6 @@ import SignupPage from './pages/SignUpPage';
 import User from './class/User';
 import { setCurrentUser } from './Global';
 function App() {
-
   useEffect(() => {
 
   }, []);

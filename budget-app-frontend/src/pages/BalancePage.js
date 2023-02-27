@@ -3,9 +3,7 @@ import DefaultPage from "./DefaultPage";
 import "./BalancePage.css"
 export default function BalancePage() {
     return (
-
         <div>
-
             <Navbar />
             <div className="loan-subheader">
                 <h2>
@@ -18,7 +16,6 @@ export default function BalancePage() {
 
             <div className="balance-page-section">
                 <div className="balance-page-input">
-
                     <div >
                         <h3>Input your Balance:</h3 >
 
@@ -32,7 +29,6 @@ export default function BalancePage() {
                 <div className="balance-page-input" style={{ backgroundColor: "#06AADA" }}>
                     <div >
                         <h3>Input your Balance:</h3 >
-
                         <form>
                             <input type={"text"} />
                         </form >
@@ -43,12 +39,10 @@ export default function BalancePage() {
 
                     <div >
                         <h3>Input your Balance:</h3 >
-
                         <form>
                             <input type={"text"} />
                         </form >
                     </div>
-
                 </div >
             </div >
         </div >

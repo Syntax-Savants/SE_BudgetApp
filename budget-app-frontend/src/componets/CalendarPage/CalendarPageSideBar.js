@@ -4,7 +4,6 @@ import * as Utils from "../../utils/Utils"
 
 
 export default function CalendarPageSideBar() {
-
     return (
         <div className="CSideBar">
             <div>
@@ -20,9 +19,9 @@ export default function CalendarPageSideBar() {
             <div className="my-calendars">
                 <h3>My Calendars</h3>
 
-                <Checkbox textColor={"#06AADA"} text={"Planned Expenses"} />
-                <Checkbox textColor={"#70C02F"} text={"Unplanned Expenses"} />
-                <Checkbox textColor={"#33826A"} text={"Other"} />
+                <Checkbox onChange={checkPlannedExpenses} textColor={"#06AADA"} text={"Planned Expenses"} />
+                <Checkbox onChange={checkUnplannedExpenses}textColor={"#70C02F"} text={"Unplanned Expenses"} />
+                <Checkbox onChange={checkOther}textColor={"#33826A"} text={"Other"} />
 
                 <button className="login-button">Add Expense</button>
             </div>
@@ -30,8 +29,19 @@ export default function CalendarPageSideBar() {
     );
 };
 
+function checkPlannedExpenses(value) {
+    console.log(value);
 
+}
 
+function checkUnplannedExpenses(value) {
+    console.log(value);
+
+}
+function checkOther(value) {
+    console.log(value);
+
+}
 function SideBarInput({ display, label, style }) {
 
     return (

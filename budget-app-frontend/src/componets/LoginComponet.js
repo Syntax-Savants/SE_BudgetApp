@@ -23,23 +23,18 @@ function LoginComponent() {
         const username = event.target.username.value;
         const password = event.target.password.value;
 
-
         Server.Login(username, password).then(response => {
-
 
             if (response) {
                 //change page to home
                 navigate('/home');
-
                 // else display message incorrect username or password
             } else {
                 displayError("Incorrect username or password");
-
             }
             event.target.reset();
 
         });
-
     };
     return (
         <div className="login-container">
@@ -47,11 +42,12 @@ function LoginComponent() {
             <h1 className="login-header">Login to your personal budget</h1>
 
             <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
+
             <form className="login-form" onSubmit={handleSubmit}>
                 <label>Username:</label>
-                <input id='username'>
 
-                </input>
+                <input id='username'></input>
+
                 <label>Password:</label>
 
                 <input id='password' type={"password"}></input>
@@ -61,14 +57,3 @@ function LoginComponent() {
         </div >
     );
 } export default LoginComponent;
-
-
-function login(username, password) {
-
-
-    //login
-
-    console.log('Logining in to ' + username);
-
-    return true;
-}

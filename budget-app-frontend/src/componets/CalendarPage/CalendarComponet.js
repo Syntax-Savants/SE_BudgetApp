@@ -18,8 +18,6 @@ function CalendarComponet() {
     }
     return (
         <div className="Sample">
-
-
             <div className="Sample__container">
                 <main className="Sample__container__content">
                     <CalendarCycler date={activeDate} nextMonth={cycleToNextMonth} prevMonth={cycleToPrevMonth} />
@@ -29,14 +27,10 @@ function CalendarComponet() {
                         formatShortWeekday={(d, a) => utils.formatWeekday(d, a)}
                         tileClassName={utils.tileClassName}
                         showNavigation={false} />
-
                 </main>
             </div>
         </div>
-
-
     );
-
 }
 
 function CalendarCycler({ date, nextMonth, prevMonth }) {

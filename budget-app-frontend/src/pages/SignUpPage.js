@@ -20,21 +20,17 @@ export default function SignupPage() {
 
             <form onSubmit={handleSubmit} className="login-form">
 
-
                 <label>First Name:</label>
 
                 <input id='firstName'></input>
-
 
                 <label>Last Name:</label>
 
                 <input id='lastName'></input>
 
-
                 <label>Username:</label>
-                <input id='username'>
 
-                </input>
+                <input id='username'> </input>
                 <label>Password:</label>
 
                 <input id='password' type={"password"}></input>

@@ -4,7 +4,6 @@ import "./LoanPage.css";
 import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';
 
-
 export default function LoanPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,8 +17,6 @@ export default function LoanPage() {
     const [monthlyPayment, setMonthlyPayment] = useState('$0');
 
     return (
-
-
         <div>
             <Navbar />
             <h2 className="loan-subheader">

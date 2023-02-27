@@ -13,7 +13,7 @@ function CalendarPage() {
 
         <div className="" style={{ height: '100%' }}>
 
-            <Navbar logged={true} />
+            <Navbar  logged={true} />
             <h2 className="loan-subheader">
                 Welcome {getCurrentUser().firstName}!
 
@@ -25,5 +25,7 @@ function CalendarPage() {
             </div>
         </div>);
 }
+
+
 
 export default CalendarPage;
