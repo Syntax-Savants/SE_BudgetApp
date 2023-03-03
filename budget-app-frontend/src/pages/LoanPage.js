@@ -1,5 +1,4 @@
-import "../componets/Navbar";
-import Navbar from "../componets/Navbar";
+import Navbar from "../components/Navbar";
 import "./LoanPage.css";
 import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';

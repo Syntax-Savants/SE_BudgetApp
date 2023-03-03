@@ -13,7 +13,6 @@ export default function SignupPage() {
 
     }
 
-
     return <div>
 
         <div className="login-container">
@@ -29,8 +28,7 @@ export default function SignupPage() {
                 <input id='lastName'></input>
 
                 <label>Username:</label>
-
-                <input id='username'> </input>
+                <input id='username'/>
                 <label>Password:</label>
 
                 <input id='password' type={"password"}></input>

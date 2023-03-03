@@ -16,7 +16,7 @@ export function setCurrentUser(user) {
 export function getCurrentUser() {
     if (bypassServer) {
 
-        return (new User("username", "test", "test", "test"));
+        return (new User("username", "test", "test"));
     }
 
     if (currentUser != null) {
@@ -29,7 +29,9 @@ export function getCurrentUser() {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
         const foundUser = JSON.parse(loggedInUser);
-        return foundUser;
+        currentUser = new User(foundUser.username, foundUser.firstName, foundUser.lastName);
+
+        return currentUser;
     }
 
     console.log("Getting user from cookies");

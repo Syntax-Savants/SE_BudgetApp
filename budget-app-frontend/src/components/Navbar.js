@@ -30,7 +30,6 @@ function Navbar({ logged = true, pageID, extraElement }) {
 
             <ul className="navbar-links">
 
-
                 <li><Link to="/signup">Signup</Link></li>
             </ul>
         </nav>

@@ -11,7 +11,7 @@
     display: inline-block;
     background-color: rgb(51, 130, 106);
     color: white;
-    border-radius: 100%;
+    border-radius: 35%;
     padding: 20px;
     margin: 0 30px;
     transition: 0.1s;
@@ -79,7 +79,7 @@
 }
 
 .react-calendar__viewContainer {
-
+    
     border-width: 2px;
     border-color: rgb(51, 130, 106);
     border-style: solid;
@@ -95,7 +95,6 @@
     border-width: 2px;
     border-color: rgb(51, 130, 106);
     border-style: solid;
-
 }
 
 .tile>abbr {
@@ -115,5 +114,21 @@
 
 .last {
     color: rgba(157, 157, 157, 0.5);
+    background-color: rgb(216, 216, 216);
+}
+
+.budget-adjustment {
+    padding: 1px 20px;
+    color: white;
+    margin: auto;
+    border-radius: 30%;
+    text-transform: capitalize !important;
+
+}
+
+.budget-adjustment-list {
+    margin-top: 30%;
+    overflow: auto !important;
+        height: 55%;
 
 }

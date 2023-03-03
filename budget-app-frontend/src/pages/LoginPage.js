@@ -1,7 +1,6 @@
 
-import LoginComponent from "../componets/LoginComponet";
-import LogoComponet from "../componets/LogoComponet";
-import Navbar from "../componets/Navbar";
+import LoginComponent from "../components/LoginComponent";
+import Navbar from "../components/Navbar";
 
 import "./LoginPage.css"
 function LoginPage() {

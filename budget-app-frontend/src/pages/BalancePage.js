@@ -1,4 +1,4 @@
-import Navbar from "../componets/Navbar";
+import Navbar from "../components/Navbar";
 import DefaultPage from "./DefaultPage";
 import "./BalancePage.css"
 export default function BalancePage() {

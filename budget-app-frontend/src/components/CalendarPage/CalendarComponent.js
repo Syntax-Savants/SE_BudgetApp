@@ -3,8 +3,12 @@ import Calendar from 'react-calendar';
 import React, { useState } from 'react';
 import "./Calendar.css"
 import * as utils from '../../utils/Utils.js';
+import * as Global from "../../Global"
 
-function CalendarComponet() {
+const testDate = new Date(2023, 1, 15);
+
+
+function CalendarComponent() {
 
     const [activeDate, changeActiveDate] = useState(new Date());
 
@@ -23,7 +27,7 @@ function CalendarComponet() {
                     <CalendarCycler date={activeDate} nextMonth={cycleToNextMonth} prevMonth={cycleToPrevMonth} />
                     <Calendar
                         activeStartDate={activeDate}
-                        pnActiveStartDateChange={utils.tileClassName}
+                        tileContent={getTile}
                         formatShortWeekday={(d, a) => utils.formatWeekday(d, a)}
                         tileClassName={utils.tileClassName}
                         showNavigation={false} />
@@ -32,6 +36,23 @@ function CalendarComponet() {
         </div>
     );
 }
+
+function getTile({ activeStartDate, date, view }) {
+    let user = Global.getCurrentUser();
+
+    let returnValue;
+    user.budgetAjustments.forEach(function (adjustment) {
+
+        if (utils.isSameDay(date, adjustment.date)) {
+            console.log(adjustment.date);
+
+            returnValue= adjustment.CalendarElement();
+        }
+    });
+
+    return returnValue;
+}
+
 
 function CalendarCycler({ date, nextMonth, prevMonth }) {
 
@@ -47,7 +68,7 @@ function CalendarCycler({ date, nextMonth, prevMonth }) {
 }
 
 
-export default CalendarComponet;
+export default CalendarComponent;
 
 
 

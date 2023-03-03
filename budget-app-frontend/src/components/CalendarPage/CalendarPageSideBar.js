@@ -1,9 +1,22 @@
 import "./CalendarPageSideBar.css"
 import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
+import { BudgetAdjustment } from "../../class/BudgetAdjustment"
 
+import { getCurrentUser } from "../../Global"
+import { useEffect } from "react";
+const testDate = new Date(2023, 2, 3);
 
-export default function CalendarPageSideBar() {
+export default function CalendarPageSideBar({ reload }) {
+
+    function addExpense() {
+        //  constructor(name, type, date, amount) {
+        console.log("add expense");
+
+        getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
+            "test", 0, testDate, 50));
+        reload();
+    }
     return (
         <div className="CSideBar">
             <div>
@@ -20,10 +33,10 @@ export default function CalendarPageSideBar() {
                 <h3>My Calendars</h3>
 
                 <Checkbox onChange={checkPlannedExpenses} textColor={"#06AADA"} text={"Planned Expenses"} />
-                <Checkbox onChange={checkUnplannedExpenses}textColor={"#70C02F"} text={"Unplanned Expenses"} />
-                <Checkbox onChange={checkOther}textColor={"#33826A"} text={"Other"} />
+                <Checkbox onChange={checkUnplannedExpenses} textColor={"#70C02F"} text={"Unplanned Expenses"} />
+                <Checkbox onChange={checkOther} textColor={"#33826A"} text={"Other"} />
 
-                <button className="login-button">Add Expense</button>
+                <button onClick={addExpense} className="login-button">Add Expense</button>
             </div>
         </div>
     );

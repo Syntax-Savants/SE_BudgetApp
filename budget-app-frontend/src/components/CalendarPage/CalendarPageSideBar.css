@@ -9,7 +9,7 @@
 
 .my-calendars h3 {
     text-align: center;
-    color : #33826A;
+    color: #33826A;
 }
 
 .my-calendars input {
@@ -37,8 +37,6 @@
     width: 160px;
     height: 160px;
     transition: 0.3s;
-
-
 }
 
 .CSideBar-input:hover {

@@ -11,9 +11,9 @@ function LoginComponent() {
 
     //
 
-    Server.Ping().then(res => {
+    Server.Ping().then(pingResponse => {
 
-        if (!res)
+        if (!pingResponse)
             displayError("Cannot connect to server");
 
     });
@@ -23,9 +23,9 @@ function LoginComponent() {
         const username = event.target.username.value;
         const password = event.target.password.value;
 
-        Server.Login(username, password).then(response => {
+        Server.Login(username, password).then(isVaild => {
 
-            if (response) {
+            if (isVaild) {
                 //change page to home
                 navigate('/home');
                 // else display message incorrect username or password

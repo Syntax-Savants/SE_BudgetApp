@@ -1,4 +1,7 @@
 export function isSameDay(Date1, Date2) {
+
+
+
     return (Date1.getFullYear() === Date2.getFullYear() && Date1.getMonth() === Date2.getMonth() && Date1.getDate() === Date2.getDate());
 
 
@@ -12,16 +15,19 @@ export function formatWeekday(loc, day) {
     )
 }
 
-export function tileClassName({ date, view }) {
-    const value = new Date();
+export function tileClassName({ activeStartDate,date, view }) {
+    const value =activeStartDate;
+    const today = new Date();
+
 
     // Add class to tiles in month view only
     if (view === 'month') {
         // Check if a date React-Calendar wants to check is on the list of dates to add class to
-        if (date.getMonth() != value.getMonth()) {
+        if (date.getMonth() != value.getMonth() || date.getFullYear() != value.getFullYear()) {
+
             return 'tile last';
         }
-        if (isSameDay(date, value))
+        if (isSameDay(date, today))
             return 'tile today';
         else
             return 'tile';
