@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Vector;
@@ -26,13 +27,14 @@ public class AdjustmentController {
 
     @GetMapping("/adjustments")
     @CrossOrigin
-    public ResponseEntity<List<Adjustment>> getAdjustments(@RequestHeader String auth) {
+    public ResponseEntity<List<Adjustment>> getAdjustments(@RequestHeader String auth) throws SQLException {
         Optional<User> userOptional = authentication.authenticateUser(auth);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
         User user = userOptional.get();
 
-        return new ResponseEntity<>(user.getAdjustments(), HttpStatus.OK);
+        //return new ResponseEntity<>(user.getAdjustments(), HttpStatus.OK);
+        return null;
     }
 }
