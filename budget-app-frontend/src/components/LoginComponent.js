@@ -14,7 +14,7 @@ function LoginComponent() {
     Server.Ping().then(pingResponse => {
 
         if (!pingResponse)
-            displayError("Cannot connect to server");
+            displayError("Cannot Connect To Server");
 
     });
     const handleSubmit = (event) => {
@@ -30,7 +30,7 @@ function LoginComponent() {
                 navigate('/home');
                 // else display message incorrect username or password
             } else {
-                displayError("Incorrect username or password");
+                displayError("Incorrect Username Or Password");
             }
             event.target.reset();
 

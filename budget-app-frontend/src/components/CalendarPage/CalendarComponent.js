@@ -6,12 +6,13 @@ import * as utils from '../../utils/Utils.js';
 import * as Global from "../../Global"
 
 const testDate = new Date(2023, 1, 15);
-
-
-function CalendarComponent() {
+var budgetAdjustmentList;
+function CalendarComponent({ budgetAdjustments }) {
 
     const [activeDate, changeActiveDate] = useState(new Date());
+    budgetAdjustmentList = budgetAdjustments;
 
+    console.log("reload");
     function cycleToNextMonth() {
 
         changeActiveDate(new Date(activeDate.setMonth(activeDate.getMonth() + 1)));
@@ -38,15 +39,14 @@ function CalendarComponent() {
 }
 
 function getTile({ activeStartDate, date, view }) {
-    let user = Global.getCurrentUser();
 
-    let returnValue;
-    user.budgetAjustments.forEach(function (adjustment) {
+    var returnValue;
+    budgetAdjustmentList.forEach(function (adjustment) {
 
         if (utils.isSameDay(date, adjustment.date)) {
             console.log(adjustment.date);
 
-            returnValue= adjustment.CalendarElement();
+            returnValue = adjustment.CalendarElement();
         }
     });
 

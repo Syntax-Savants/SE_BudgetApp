@@ -15,7 +15,7 @@ export default function CalendarPageSideBar({ reload }) {
 
         getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
             "test", 0, testDate, 50));
-        reload();
+        reload(getCurrentUser().budgetAdjustments);
     }
     return (
         <div className="CSideBar">

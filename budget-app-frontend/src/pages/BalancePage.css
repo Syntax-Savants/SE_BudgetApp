@@ -8,8 +8,11 @@
     display: inline-block;
     margin: 40px;
     box-shadow: 2px 2px 10px 2px black;
+    vertical-align: top;
+}
 
-
+.balance-page-input label{
+    display: block;
 }
 
 .balance-page-section {

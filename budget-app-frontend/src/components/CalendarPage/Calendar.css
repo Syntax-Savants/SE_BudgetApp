@@ -79,7 +79,7 @@
 }
 
 .react-calendar__viewContainer {
-    
+
     border-width: 2px;
     border-color: rgb(51, 130, 106);
     border-style: solid;
@@ -89,7 +89,7 @@
     position: relative;
     justify-content: center;
     display: flex;
-    width: 100px;
+    width: 190px;
     height: 100px;
     background-color: white;
     border-width: 2px;
