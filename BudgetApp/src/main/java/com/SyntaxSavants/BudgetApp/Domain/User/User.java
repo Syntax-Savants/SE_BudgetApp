@@ -25,7 +25,7 @@ public class User {
     private String first_name;
     private String last_name;
 
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
-    private List<Adjustment> adjustments;
+    //@OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
+    //private List<Adjustment> adjustments;
 
 }
