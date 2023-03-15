@@ -20,7 +20,6 @@ export default function LoanPage() {
             <Navbar />
             <h2 className="loan-subheader">
                 Welcome to your Personal Loan Estimator!
-
             </h2>
 
             <div style={{ width: "1000px", margin: "auto", marginTop: "15px" }}>
@@ -36,7 +35,7 @@ export default function LoanPage() {
                         <input id="term" type="number" step="0.01" />
                         <label htmlFor="interest">Insert Interest Rate:</label>
 
-                        <input id="interest" type="number" step="0.01" />
+                        <input placeholder="" id="interest" type="number" step="0.01" />
 
                         <input type={"submit"} />
                     </form>
@@ -75,9 +74,9 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
     const denominator = Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1;
     const monthlyPayment = numerator / denominator;
 
-    if (isNaN(monthlyPayment))
+    if (isNaN(monthlyPayment) || monthlyPayment <= 0) {
         return "Invaild input";
-
+    }
     return Utils.formatMoney(monthlyPayment);
 
 }

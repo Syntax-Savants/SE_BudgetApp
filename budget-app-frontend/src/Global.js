@@ -3,8 +3,8 @@ import { User } from "./class/User";
 import Cookies from 'universal-cookie';
 import * as Server from "./intergration/server";
 
-
 export var bypassServer = false;
+
 var currentUser = null;
 
 const cookies = new Cookies();
@@ -16,7 +16,7 @@ export function setCurrentUser(user) {
 export function getCurrentUser() {
     if (bypassServer) {
 
-        return (new User("username", "test", "test"));
+        return (new User("username", "password","test", "test"));
     }
 
     if (currentUser != null) {
@@ -29,7 +29,7 @@ export function getCurrentUser() {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
         const foundUser = JSON.parse(loggedInUser);
-        currentUser = new User(foundUser.username, foundUser.firstName, foundUser.lastName);
+        currentUser = new User(foundUser.username, foundUser.password,foundUser.firstName, foundUser.lastName);
 
         return currentUser;
     }

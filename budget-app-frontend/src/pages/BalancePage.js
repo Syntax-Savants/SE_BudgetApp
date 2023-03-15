@@ -14,8 +14,6 @@ export default function BalancePage() {
 
     const [date, setDate] = useState(new Date());
 
-    var planned;
-    var repeats;
     const addAdjustment = (event) => {
         event.preventDefault();
 
@@ -49,9 +47,7 @@ export default function BalancePage() {
                             <DatePicker selected={date}
                                 onChange={(date) => setDate(date)} />
                             <label>Planned?</label>
-                            <select id ="isPlanned" onChange={(isPlanned) => {
-                                planned = isPlanned;
-                            }}>
+                            <select id ="isPlanned">
                                 <option value={"0"}>planned</option>
                                 <option value={"1"}>unplanned</option>
                             </select >
@@ -90,7 +86,5 @@ export default function BalancePage() {
                 </div >
             </div >
         </div >
-
-
     );
 }
