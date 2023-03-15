@@ -41,12 +41,15 @@ public class UserController {
         u.setPassword(request.getPassword());
 
 
-        userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
+        if(userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword())) {
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.FORBIDDEN);
+        }
         //Statement.executeQuery
         //createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
 
 
-        return new ResponseEntity("it worked", HttpStatus.OK);
     }
 
     /*public void createUser(String first, String last, String user, String pw) throws SQLException{
