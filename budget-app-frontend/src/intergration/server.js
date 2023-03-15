@@ -51,7 +51,7 @@ export const SignUp = async (username, password, firstName, lastName) => {
     request.send(JSON.stringify(body));
 };
 
-export const addAdjustment = async (user, adjustment) => {
+export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     const username = user.username;
     const password = user.password;
     const date = serializeDate(adjustment.date);
@@ -60,7 +60,7 @@ export const addAdjustment = async (user, adjustment) => {
     var request = new XMLHttpRequest();
 
 
-    // request.open('GET', 'https://private-anon-c9009c6527-syntaxsavants.apiary-mock.com/balance');
+    // request.open('GET', locate("balance"));
 
     // request.setRequestHeader('Content-Type', 'application/json');
 
