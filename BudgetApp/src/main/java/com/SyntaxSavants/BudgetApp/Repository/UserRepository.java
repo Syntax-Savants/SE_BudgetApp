@@ -10,9 +10,14 @@ import java.util.Optional;
 public class UserRepository {
     Statement statement;
 
-    public void createUser(String first, String last, String user, String pw) throws SQLException{
+    public boolean createUser(String first, String last, String user, String pw) throws SQLException{
+        if (getUser(user).isPresent()) {
+            return false;
+        };
+
         String query = String.format("insert into user values('%s', '%s', '%s', '%s');", user, first, last, pw);
         statement.executeUpdate(query);
+        return true;
     }
 
     public UserRepository() throws ClassNotFoundException, SQLException {
@@ -21,7 +26,7 @@ public class UserRepository {
 
         // Connect to a database
         Connection connection = DriverManager.getConnection
-                ("jdbc:mysql://localhost:3306/db_syntaxsavants" , "root", "Root$321");
+                ("jdbc:mysql://localhost:3306/db_syntaxsavants" , "springuser", "SyntaxSavants42");
         System.out.println("Database connected");
 
         // Create a statement
