@@ -1,9 +1,6 @@
 export function isSameDay(Date1, Date2) {
 
-
-
     return (Date1.getFullYear() === Date2.getFullYear() && Date1.getMonth() === Date2.getMonth() && Date1.getDate() === Date2.getDate());
-
 
 }
 
@@ -65,7 +62,6 @@ export function getMonthName(month) {
             return "August";
         case 8:
             return "September";
-
         case 9:
             return "October";
         case 10:
