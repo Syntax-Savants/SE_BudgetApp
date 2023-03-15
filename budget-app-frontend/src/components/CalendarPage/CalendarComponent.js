@@ -12,7 +12,6 @@ function CalendarComponent({ budgetAdjustments }) {
     const [activeDate, changeActiveDate] = useState(new Date());
     budgetAdjustmentList = budgetAdjustments;
 
-    console.log("reload");
     function cycleToNextMonth() {
 
         changeActiveDate(new Date(activeDate.setMonth(activeDate.getMonth() + 1)));
@@ -27,6 +26,7 @@ function CalendarComponent({ budgetAdjustments }) {
                 <main className="Sample__container__content">
                     <CalendarCycler date={activeDate} nextMonth={cycleToNextMonth} prevMonth={cycleToPrevMonth} />
                     <Calendar
+
                         activeStartDate={activeDate}
                         tileContent={getTile}
                         formatShortWeekday={(d, a) => utils.formatWeekday(d, a)}
@@ -60,7 +60,6 @@ function CalendarCycler({ date, nextMonth, prevMonth }) {
     return (<div className='cycler'>
 
         <button className='cyclerButton' onClick={prevMonth}> {"<"} </button >
-
         <h1 style={{ display: 'inline-block' }}>{utils.getMonthName(date.getMonth()).toUpperCase() + " " + date.getFullYear()} </h1>
         <button className='cyclerButton' onClick={nextMonth}> {">"} </button >
 

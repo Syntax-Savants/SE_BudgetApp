@@ -15,8 +15,8 @@ export function formatWeekday(loc, day) {
     )
 }
 
-export function tileClassName({ activeStartDate,date, view }) {
-    const value =activeStartDate;
+export function tileClassName({ activeStartDate, date, view }) {
+    const value = activeStartDate;
     const today = new Date();
 
 
@@ -88,6 +88,10 @@ export function formatMoney(num) {
 
 }
 
+export function serializeDate(date) {
+
+    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+}
 
 
 

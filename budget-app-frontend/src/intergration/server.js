@@ -1,7 +1,7 @@
 import { bypassServer, setCurrentUser } from '../Global.js';
 import { User } from "../class/User";
 import Cookies from 'universal-cookie';
-
+import { serializeDate } from '../utils/Utils.js';
 const SERVER_ADRESS = "http://localhost:8080";
 const cookies = new Cookies();
 
@@ -23,7 +23,6 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
 
     if (bypassServer) {
-
 
         return;
     }
@@ -51,6 +50,47 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
     request.send(JSON.stringify(body));
 };
+
+export const addAdjustment = async (user, adjustment) => {
+    const username = user.username;
+    const password = user.password;
+    const date = serializeDate(adjustment.date);
+    const value = adjustment.amount;
+    const isPlanned = adjustment.type = 0 ? true : false;
+    var request = new XMLHttpRequest();
+
+
+    // request.open('GET', 'https://private-anon-c9009c6527-syntaxsavants.apiary-mock.com/balance');
+
+    // request.setRequestHeader('Content-Type', 'application/json');
+
+    // request.onreadystatechange = function () {
+    //     if (this.readyState === 4) {
+    //         console.log('Status:', this.status);
+    //         console.log('Headers:', this.getAllResponseHeaders());
+    //         console.log('Body:', this.responseText);
+    //     }s
+    // };
+
+    // var body = {
+    //     'creds': {
+    //         'username': username,
+    //         'password': password
+    //     },
+    //     'startDate': '',
+    //     'endDate': '',
+    //     'adjustments': [
+    //         {
+    //             'planned': isPlanned,
+    //             'value': value,
+    //             'date': date
+    //         }
+    //     ]
+    // };
+
+    // request.send(JSON.stringify(body));
+
+}
 
 
 export const Login = async (username, password) => {
@@ -124,6 +164,9 @@ export function Logout() {
     localStorage.setItem('user', '');
 
 }
+
+
+
 
 function locate(mapping) {
 

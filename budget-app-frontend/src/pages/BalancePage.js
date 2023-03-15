@@ -17,8 +17,6 @@ export default function BalancePage() {
 
     const [date, setDate] = useState(new Date());
 
-    var planned;
-    var repeats;
     const addAdjustment = (event) => {
         event.preventDefault();
 
@@ -38,7 +36,7 @@ export default function BalancePage() {
 
             <div className="subTitle">
                 <h3>
-                    Update, add, remove. We got you covered 
+                    Update, add, remove. We got you covered
                 </h3>
                 <hr></hr>
             </div>
@@ -54,9 +52,9 @@ export default function BalancePage() {
                             </form>
                         </div>
                     </div>
-                
 
-                
+
+
                     <div className="picTitle">
                         <div>
                             <form style={{display: "block" }}>
@@ -66,9 +64,9 @@ export default function BalancePage() {
                             </form>
                         </div>
                     </div>
-              
 
-                
+
+
                     <div className="picTitle">
                         <div>
                             <form style={{display: "block" }}>
@@ -77,7 +75,7 @@ export default function BalancePage() {
                             </form>
                         </div>
                     </div>
-                
+
             </div>
             <hr></hr>
 
@@ -90,7 +88,7 @@ export default function BalancePage() {
                             <label>indicate your starting balance.</label>
                             <br></br>
                             <input type={"text"}/>
-                            <button className="enterBalance">Enter</button> 
+                            <button className="enterBalance">Enter</button>
                         </form>
                     </div>
                 </div >
@@ -98,9 +96,9 @@ export default function BalancePage() {
                 <div className="balance-page-input">
                     <div >
                         <form style={{display: "block" }}>
-                            <lable>Give Us More Information About </lable> 
+                            <lable>Give Us More Information About </lable>
                             <lable>Your Expense. </lable>
-                            
+
                             <Checkbox onChange={checkPlannedExpenses} text={"Planned"}/>
                             <Checkbox onChange={checkUnplannedExpenses} text={"Unplanned"}/>
                             <label>Title:</label>
@@ -113,7 +111,7 @@ export default function BalancePage() {
                         </form>
                     </div>
                 </div >
-                
+
                 <div className="balance-page-input">
                     <div>
                         <form style={{display: "block" }}>
@@ -135,11 +133,11 @@ export default function BalancePage() {
 
     function checkPlannedExpenses(value) {
         console.log(value);
-    
+
     }
-    
+
     function checkUnplannedExpenses(value) {
         console.log(value);
-    
+
     }
 }

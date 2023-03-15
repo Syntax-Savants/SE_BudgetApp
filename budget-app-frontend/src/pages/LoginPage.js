@@ -4,22 +4,14 @@ import Navbar from "../components/Navbar";
 
 import "./LoginPage.css"
 function LoginPage() {
-
     return (
-
-
         <div style={{ height: "100vh" }}>
-
-
             <Navbar logged={false} />
             <div className="login-page">
                 <LoginComponent />
                 <LoginDecor />
             </div>
         </div>
-
-
-
     );
 }
 
@@ -32,7 +24,6 @@ function LoginDecor() {
 }
 
 function DecorCircle({ x, y, size, color }) {
-
     return (
         <div
             className="login-decor"
@@ -40,12 +31,6 @@ function DecorCircle({ x, y, size, color }) {
             top={y}
             left={x}
             style={{ backgroundColor: color, width: size, height: size, top: y, left: x }}>
-
-
-
-
-
-
         </div>
     );
 }
