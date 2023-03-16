@@ -1,5 +1,5 @@
 import { BudgetAdjustment } from "./BudgetAdjustment"
-import { addAdjustment } from "../intergration/server";
+import { addBudgetAdjustmentToServer } from "../intergration/server";
 export class User {
     constructor(username, password, firstName, lastName) {
         this.username = username;
@@ -8,11 +8,10 @@ export class User {
         this.lastName = lastName;
         this.budgetAdjustments = [new BudgetAdjustment("rent", 2, new Date(2023, 2, 15), 50)];
 
-
     }
     addBudgetAdjustment(budgetAdjustment) {
         this.budgetAdjustments.push(budgetAdjustment);
-        addAdjustment(this, budgetAdjustment);
+        addBudgetAdjustmentToServer(this, budgetAdjustment);
     }
 
     BudgetAdjustmentList() {

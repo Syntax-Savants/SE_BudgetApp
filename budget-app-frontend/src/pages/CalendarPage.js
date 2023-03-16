@@ -11,7 +11,6 @@ function CalendarPage() {
     const [budgetAdjustments, setBudgetAdjustments] = useState(getCurrentUser().budgetAdjustments);
     console.log("test"  + budgetAdjustments);
 
-
     return (
         <div className="" style={{ height: '100%' }}>
 
@@ -27,7 +26,5 @@ function CalendarPage() {
             </div>
         </div>);
 }
-
-
 
 export default CalendarPage;
