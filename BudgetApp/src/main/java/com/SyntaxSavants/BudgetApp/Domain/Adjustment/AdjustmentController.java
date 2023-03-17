@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @RestController
 public class AdjustmentController {
@@ -21,7 +22,7 @@ public class AdjustmentController {
     @Autowired
     private AuthenticationService authentication;
 
-    @GetMapping("/adjustments")
+    @GetMapping("/balance")
     @CrossOrigin
     public ResponseEntity<List<Adjustment>> getAdjustments(@RequestHeader String auth) throws SQLException {
         Optional<User> userOptional = authentication.authenticateUser(auth);
@@ -34,17 +35,29 @@ public class AdjustmentController {
         return null;
     }
 
-    @PostMapping("/adjustments")
+    @PostMapping("/balance")
     @CrossOrigin
-    public ResponseEntity<List<Adjustment>> createAdjustment(@RequestBody CreateAdjustmentRequest request) throws SQLException{
+    public ResponseEntity<List<Adjustment>> createAdjustment(@RequestBody CreateAdjustmentRequest request, @RequestHeader String auth) throws SQLException{
+
+        Optional<User> userOptional = authentication.authenticateUser(auth);
+        if (userOptional.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+        Random random = new Random();
         Adjustment t = new Adjustment();
-        t.setId(request.getId());
+        t.setId(random.nextLong());
         t.setAmt(request.getAmt());
         t.setDate(request.getDate());
+        t.setDescription(request.getDescription());
         t.setPlanned(request.isPlanned());
-        t.setUser(request.getUser());
+        t.setUser_username(userOptional.get().getUsername());     //changed to fit change to string data type
 
-        return null;
+        if(adjustmentRepository.createAdjustment(t.getId(), t.getDescription(), t.getUser_username(),  t.getDate(), t.getAmt(), t.isPlanned())) {
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.FORBIDDEN);
+        }
+        //return null;
     }
 
 }
