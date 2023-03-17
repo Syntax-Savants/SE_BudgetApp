@@ -25,18 +25,19 @@ public class AdjustmentRepository {
     }
 
     public Optional<Adjustment> getOneAdjustment(Float id) throws SQLException {
-        String query = String.format("select * from adjustment where id = '%d';", id);
+        String query = String.format("select * from adjustment where id = '%s';", id);
         ResultSet resultSet = statement.executeQuery(query);
 
         if(!resultSet.next()){
             return Optional.empty();
         }
-        /*return Optional.of(new Adjustment(resultSet.getLong("id"),
-                resultSet.getUser("user"),                              //getUser does not work
+        return Optional.of(new Adjustment(resultSet.getLong("id"),
+                resultSet.getString("description"),
+                resultSet.getString("username"),                //changed to getting string              //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));*/
-        return null; //preventing errors
+                resultSet.getBoolean("planned")));
+        //return null; //preventing errors
 
     }
 
@@ -47,19 +48,24 @@ public class AdjustmentRepository {
         if(!resultSet.next()){
             return Optional.empty();
         }
-        /*return Optional.of(new Adjustment(resultSet.getLong("id"),
-                resultSet.getUser("user"),                              //getUser does not work
+        return Optional.of(new Adjustment(resultSet.getLong("id"),
+                resultSet.getString("description"),
+                resultSet.getString("username"),                   //changed to getting string             //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));*/
-        return null; //preventing errors
+                resultSet.getBoolean("planned")));
+        //return null; //preventing errors
 
 
     }
 
-    public void createAdjustment(Long id, User user, Date date, Float amt, boolean planned) throws SQLException{
-        String query = String.format("insert into adjustment values('%d', '%a', '%s', '%b', '%s", id, amt, date, planned, user);
+    public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, boolean planned) throws SQLException{
+        if (getOneAdjustment(id.floatValue()).isPresent()) {
+            return false;
+        };
+        String query = String.format("insert into adjustment values('%s', '%a', '%s', '%s', '%b', '%s", id,  amt, date, desc, planned, user);
         statement.executeUpdate(query);
+        return true;
     }
 
 }

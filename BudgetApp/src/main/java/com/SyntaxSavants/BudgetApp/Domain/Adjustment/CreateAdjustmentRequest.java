@@ -6,10 +6,10 @@ import java.util.Date;
 
 @Data
 public class CreateAdjustmentRequest {
-    private Long id;
-    private User user;
+    //private Long id;
 
     private Date date;
+    private String description;
 
     private float amt;
 
