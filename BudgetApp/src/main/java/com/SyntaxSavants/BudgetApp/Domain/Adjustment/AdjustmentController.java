@@ -6,15 +6,11 @@ import com.SyntaxSavants.BudgetApp.Service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.Vector;
 
 @RestController
 public class AdjustmentController {
@@ -37,4 +33,18 @@ public class AdjustmentController {
         //return new ResponseEntity<>(user.getAdjustments(), HttpStatus.OK);
         return null;
     }
+
+    @PostMapping("/adjustments")
+    @CrossOrigin
+    public ResponseEntity<List<Adjustment>> createAdjustment(@RequestBody CreateAdjustmentRequest request) throws SQLException{
+        Adjustment t = new Adjustment();
+        t.setId(request.getId());
+        t.setAmt(request.getAmt());
+        t.setDate(request.getDate());
+        t.setPlanned(request.isPlanned());
+        t.setUser(request.getUser());
+
+        return null;
+    }
+
 }
