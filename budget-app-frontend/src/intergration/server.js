@@ -69,7 +69,7 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     //         console.log('Status:', this.status);
     //         console.log('Headers:', this.getAllResponseHeaders());
     //         console.log('Body:', this.responseText);
-    //     }s
+    //     }
     // };
 
     // var body = {
@@ -102,6 +102,7 @@ export const Login = async (username, password) => {
     var header = `${username}:${password}`;
     var response = await getUserFromHeader(header);
 
+    
     console.log("User from header: " + response);
 
 
@@ -152,7 +153,7 @@ export async function getUserFromHeader(header) {
 
     }
 
-    return new User(response.username, response.first_name, response.last_name);
+    return new User(response.username, response.password, response.first_name, response.last_name);
 
 
 }
