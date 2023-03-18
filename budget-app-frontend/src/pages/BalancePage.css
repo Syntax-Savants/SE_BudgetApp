@@ -1,22 +1,87 @@
+.subTitle{
+    color: #33826a;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 20px;
+}
+
+.picTitle{
+    color: #33826a;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 0;
+    display: inline-block;
+    margin: 30px;
+    width: 250px;
+    height: 200px;
+    padding: 50px;
+    
+}
+
 .balance-page-input {
 
-    color: white;
-    background-color: #13ae4b;
+    color: black;
     width: 250px;
     height: 350px;
-    text-align: center;
+    text-align: left;
     display: inline-block;
-    margin: 40px;
-    box-shadow: 2px 2px 10px 2px black;
+    margin: 70px;
     vertical-align: top;
+    padding: 10px;
 }
+
 
 .balance-page-input label{
     display: block;
+    text-align: left;
 }
 
 .balance-page-section {
-
     margin: auto;
     width: fit-content;
 }
+
+.enterBalance{
+    margin-top: 10px;
+    font-size: 13px;
+    border-width: 1px;
+    border-radius: 3px;
+    background-color: #4B7F6A;
+    color: white;
+    width: 50%;
+    height: 30px;
+}
+
+.picTitle img{
+    object-fit: contain;
+    height: 90px;
+    
+}
+
+.circleOne {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    background: #33826a;
+    margin-left: 50px;
+    
+}
+
+.circleTwo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    background: #52b300;
+    margin-left: 50px;
+}
+
+.circleThree {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    background: #08a8da;
+    margin-left: 50px;
+  }
