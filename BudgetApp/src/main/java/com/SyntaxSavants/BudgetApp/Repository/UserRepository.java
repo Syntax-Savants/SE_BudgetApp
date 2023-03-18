@@ -21,7 +21,7 @@ public class UserRepository {
 
         // Connect to a database
         Connection connection = DriverManager.getConnection
-                ("jdbc:mysql://localhost:3306/db_syntaxsavants" , "root", "Root$321");
+                ("jdbc:mysql://localhost:3306/db_syntaxsavants" , "root", "root");
         System.out.println("Database connected");
 
         // Create a statement
