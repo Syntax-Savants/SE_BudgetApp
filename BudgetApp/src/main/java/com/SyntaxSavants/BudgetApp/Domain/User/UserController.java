@@ -33,12 +33,18 @@ public class UserController {
     @PostMapping("/user")
     @CrossOrigin
     public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) throws SQLException {
+    public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) throws SQLException {
         User u = new User();
 
         u.setFirst_name(request.getFirst_name());
         u.setLast_name(request.getLast_name());
         u.setUsername(request.getUsername());
         u.setPassword(request.getPassword());
+
+
+        userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
+        //Statement.executeQuery
+        //createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
 
 
         if(userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword())) {
@@ -51,6 +57,10 @@ public class UserController {
 
 
     }
+
+    /*public void createUser(String first, String last, String user, String pw) throws SQLException{
+        statement.executeQuery("insert into user values('JohnDoe123', 'John', 'Doe', 'rootPW')");
+    }*/
 
     /*public void createUser(String first, String last, String user, String pw) throws SQLException{
         statement.executeQuery("insert into user values('JohnDoe123', 'John', 'Doe', 'rootPW')");

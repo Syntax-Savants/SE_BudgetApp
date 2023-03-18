@@ -1,3 +1,5 @@
+
+
 import Navbar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import Checkbox from "../components/ui/CheckBox";
@@ -17,6 +19,8 @@ export default function BalancePage() {
 
     const [date, setDate] = useState(new Date());
 
+    var planned;
+    var repeats;
     const addAdjustment = (event) => {
         event.preventDefault();
 
@@ -40,44 +44,6 @@ export default function BalancePage() {
                 </h3>
                 <hr></hr>
             </div>
-
-            <div className="balance-page-section">
-                
-                    <div className="picTitle">
-                        <div>
-                            <form style={{display: "block" }}>
-                                <div className="circleOne"><img src={scale} alt="scale"/></div>
-                                <br></br>
-                                <h3>Your Balance</h3>
-                            </form>
-                        </div>
-                    </div>
-
-
-
-                    <div className="picTitle">
-                        <div>
-                            <form style={{display: "block" }}>
-                                <div className="circleTwo"><img src={money} alt="money"/></div>
-                                <br></br>
-                                <h3>Add Your Expense</h3>
-                            </form>
-                        </div>
-                    </div>
-
-
-
-                    <div className="picTitle">
-                        <div>
-                            <form style={{display: "block" }}>
-                                <div className="circleThree"><img src={x} alt="x"/></div>
-                                <h3>Remove an Existing <br></br>Expense or Balance</h3>
-                            </form>
-                        </div>
-                    </div>
-
-            </div>
-            <hr></hr>
 
             <div className="balance-page-section">
                 <div className="balance-page-input">
