@@ -13,5 +13,5 @@ public class CreateAdjustmentRequest {
 
     private float amt;
 
-    private boolean planned;
+    private int planned;
 }

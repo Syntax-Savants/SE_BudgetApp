@@ -36,7 +36,7 @@ public class AdjustmentRepository {
                 resultSet.getString("username"),                //changed to getting string              //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));
+                resultSet.getInt("planned")));
         //return null; //preventing errors
 
     }
@@ -53,19 +53,38 @@ public class AdjustmentRepository {
                 resultSet.getString("username"),                   //changed to getting string             //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));
+                resultSet.getInt("planned")));
         //return null; //preventing errors
 
 
     }
 
-    public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, boolean planned) throws SQLException{
+    public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, int planned) throws SQLException{
         if (getOneAdjustment(id.floatValue()).isPresent()) {
             return false;
         };
-        String query = String.format("insert into adjustment values('%s', '%a', '%s', '%s', '%b', '%s", id,  amt, date, desc, planned, user);
+
+        //System.out.println("Java Date: " + date);              //for testing purposes
+
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        //System.out.println("SQL Date:" + sqlDate);             //for testing purposes
+        //System.out.println();
+
+        String query = String.format("insert into adjustment values('%s', '%s', '%s', '%s', '%s', '%s')", id,  amt, sqlDate, desc, planned, user);
         statement.executeUpdate(query);
         return true;
     }
+/*
+    fetch("http://localhost:8080/balance", {
+        method: "Post",
+                headers: {
+            "Content-Type": "application/json",
+                    "auth":"JohnDoe123:rootPW"
+        },
+        body: JSON.stringify({amt:550, date:"2016-12-01",description:"Car Repair",planned:0})
+    }).then((x)=> {
+        console.log(x)
+    })
+    */
 
 }
