@@ -22,6 +22,8 @@
 }
 
 .login-decor {
+    animation-name: fadeIn;
+    animation-duration: 2s;
     border-radius: 100%;
     position: absolute;
 }
