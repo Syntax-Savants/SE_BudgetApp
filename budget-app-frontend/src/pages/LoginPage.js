@@ -1,6 +1,7 @@
 
 import LoginComponent from "../components/LoginComponent";
 import Navbar from "../components/Navbar";
+import DecorCircle from "../components/CalendarPage/DecorCircle";
 
 import "./LoginPage.css"
 function LoginPage() {
@@ -23,16 +24,5 @@ function LoginDecor() {
     </div>
 }
 
-function DecorCircle({ x, y, size, color }) {
-    return (
-        <div
-            className="login-decor"
-
-            top={y}
-            left={x}
-            style={{ backgroundColor: color, width: size, height: size, top: y, left: x }}>
-        </div>
-    );
-}
 
 export default LoginPage;

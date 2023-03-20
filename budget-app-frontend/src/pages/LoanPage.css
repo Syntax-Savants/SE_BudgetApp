@@ -1,7 +1,9 @@
 .loan-form {
-
+    display: inline-block;
     color: white;
-    margin-left: 80px;
+    margin-left: 120px;
+    vertical-align: top;
+
 }
 
 .loan-form .input-section {
@@ -10,12 +12,20 @@
     margin: 50px 0;
 }
 
-.loan-form .input-section label {
-    margin-left: 40px;
-}
+.loan-form .input-section label {}
 
 .loan-form input {
     margin: 10px 40px;
+}
+
+.loan-decor-container {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    width: 50%;
+    height: 30rem;
+    margin-right: auto;
 }
 
 .loan-header {
@@ -23,17 +33,20 @@
     color: white;
     font-weight: normal;
     margin: 40px;
+    margin-bottom: 0;
 
 }
+
 .loan-button {
-    border-radius:10%;
-    min-width:220px;
+    border-radius: 10%;
+    min-width: 220px;
     padding: 10px;
     font-size: 20px;
     border: none;
     color: black;
     background-color: white;
 }
+
 .loan-subheader {
     color: white;
     background-color: #33826A;

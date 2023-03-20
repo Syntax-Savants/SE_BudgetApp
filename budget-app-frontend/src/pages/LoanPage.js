@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import "./LoanPage.css";
 import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';
-
+import DecorCircle from "../components/CalendarPage/DecorCircle";
 export default function LoanPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,7 +16,7 @@ export default function LoanPage() {
     const [monthlyPayment, setMonthlyPayment] = useState('$0');
 
     return (
-        <div style={{ backgroundColor: "#33826a", height: '100vh' }}>
+        <div style={{ backgroundColor: "#33826a", minHeight: '100vh' }}>
             <Navbar />
             <h2 className="loan-header">
                 Personal Loan Estimator
@@ -46,6 +46,15 @@ export default function LoanPage() {
 
                     </form>
                     <p style={{ fontSize: '25px' }}>Your Monthly Payment is: {monthlyPayment} </p>
+                </div>
+
+                <div className="loan-decor-container" >
+                <DecorCircle size={250} x={270} y={50} color={"#4CA7D5"} />
+
+                    <DecorCircle size={400} x={70} y={150} color={"#F7D149"} /> {/* Yellow*/}
+                    <DecorCircle size={200} x={0} y={400} color={"#6CB134"} />{/*Green*/}
+
+
                 </div>
                 {/*
                 <div className="loan-display">
