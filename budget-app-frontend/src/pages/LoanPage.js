@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import "./LoanPage.css";
 import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';
-
+import DecorCircle from "../components/CalendarPage/DecorCircle";
 export default function LoanPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,34 +16,48 @@ export default function LoanPage() {
     const [monthlyPayment, setMonthlyPayment] = useState('$0');
 
     return (
-        <div>
+        <div style={{ backgroundColor: "#33826a", minHeight: '100vh' }}>
             <Navbar />
-            <h2 className="loan-subheader">
-                Welcome to your Personal Loan Estimator!
+            <h2 className="loan-header">
+                Personal Loan Estimator
+                <hr />
             </h2>
 
-            <div style={{ width: "1000px", margin: "auto", marginTop: "15px" }}>
+            <div style={{}}>
                 <div className="loan-form">
-                    <h3> Personal Loan Estimator </h3>
                     <form style={{ display: "block" }} onSubmit={handleSubmit}>
+                        <div className="input-section">
+                            <label htmlFor="amount" step="0.01"> Insert Loan Amount:</label>
+                            <input id="amount" type="number" step="0.01" />
+                        </div>
 
-                        <label htmlFor="amount" step="0.01"> Insert Loan Amount:</label>
+                        <div className="input-section">
 
-                        <input id="amount" type="number" step="0.01" />
-                        <label htmlFor="term">Insert Loan Term in months:</label>
+                            <label htmlFor="term">Insert Loan Term in months:</label>
+                            <input id="term" type="number" step="0.01" />
+                        </div>
+                        <div className="input-section">
 
-                        <input id="term" type="number" step="0.01" />
-                        <label htmlFor="interest">Insert Interest Rate:</label>
+                            <label htmlFor="interest">Insert Interest Rate:</label>
+                            <input placeholder="" id="interest" type="number" step="0.01" />
+                        </div>
+                        <input className="loan-button" type={"submit"} value="View Rates" />
+                        <input className="loan-button" type={"submit"} value="Help Me Decide" />
 
-                        <input placeholder="" id="interest" type="number" step="0.01" />
-
-                        <input type={"submit"} />
                     </form>
-
+                    <p style={{ fontSize: '25px' }}>Your Monthly Payment is: {monthlyPayment} </p>
                 </div>
 
-                <div className="loan-display">
+                <div className="loan-decor-container" >
+                <DecorCircle size={250} x={270} y={50} color={"#4CA7D5"} />
 
+                    <DecorCircle size={400} x={70} y={150} color={"#F7D149"} /> {/* Yellow*/}
+                    <DecorCircle size={200} x={0} y={400} color={"#6CB134"} />{/*Green*/}
+
+
+                </div>
+                {/*
+                <div className="loan-display">
                     <p style={{ fontSize: "25px", textAlign: "center" }}> Your monthly payment is...</p>
                     <div className="loan-display-text">
 
@@ -51,7 +65,7 @@ export default function LoanPage() {
 
                     </div>
                 </div>
-
+    */}
             </div>
         </div>
     )

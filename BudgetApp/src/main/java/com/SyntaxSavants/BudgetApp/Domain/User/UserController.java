@@ -41,6 +41,11 @@ public class UserController {
         u.setPassword(request.getPassword());
 
 
+        userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
+        //Statement.executeQuery
+        //createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
+
+
         if(userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword())) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
@@ -51,6 +56,10 @@ public class UserController {
 
 
     }
+
+    /*public void createUser(String first, String last, String user, String pw) throws SQLException{
+        statement.executeQuery("insert into user values('JohnDoe123', 'John', 'Doe', 'rootPW')");
+    }*/
 
     /*public void createUser(String first, String last, String user, String pw) throws SQLException{
         statement.executeQuery("insert into user values('JohnDoe123', 'John', 'Doe', 'rootPW')");
