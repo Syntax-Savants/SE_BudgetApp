@@ -5,8 +5,11 @@ import com.SyntaxSavants.BudgetApp.Domain.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.Date;
+import java.time.*;
 @Repository
 public class AdjustmentRepository {
 
@@ -64,9 +67,12 @@ public class AdjustmentRepository {
             return false;
         };
 
-        //System.out.println("Java Date: " + date);              //for testing purposes
+        System.out.println("Java Date: " + date);              //for testing purposes
 
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        java.util.Date temp = new Date(date.getTime() + (1000 * 60 * 60 * 24));
+        //System.out.println("Temp:" + temp);                    //for testing purposes
+
+        java.sql.Date sqlDate = new java.sql.Date(temp.getTime());
         //System.out.println("SQL Date:" + sqlDate);             //for testing purposes
         //System.out.println();
 
@@ -81,7 +87,7 @@ public class AdjustmentRepository {
             "Content-Type": "application/json",
                     "auth":"JohnDoe123:rootPW"
         },
-        body: JSON.stringify({amt:550, date:"2016-12-01",description:"Car Repair",planned:0})
+        body: JSON.stringify({amt:550, date:"2017-05-04",description:"Test3",planned:0})
     }).then((x)=> {
         console.log(x)
     })
