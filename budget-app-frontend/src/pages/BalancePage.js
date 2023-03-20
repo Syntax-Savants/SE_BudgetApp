@@ -46,7 +46,7 @@ export default function BalancePage() {
 
                     <div className="picTitle">
                         <div>
-                            <form style={{display: "block" }}>
+                            <form>
                                 <div className="circleOne"><img src={scale} alt="scale"/></div>
                                 <br></br>
                                 <h3>Your Balance</h3>
@@ -58,7 +58,7 @@ export default function BalancePage() {
 
                     <div className="picTitle">
                         <div>
-                            <form style={{display: "block" }}>
+                            <form>
                                 <div className="circleTwo"><img src={money} alt="money"/></div>
                                 <br></br>
                                 <h3>Add Your Expense</h3>
@@ -70,7 +70,7 @@ export default function BalancePage() {
 
                     <div className="picTitle">
                         <div>
-                            <form style={{display: "block" }}>
+                            <form>
                                 <div className="circleThree"><img src={x} alt="x"/></div>
                                 <h3>Remove an Existing <br></br>Expense or Balance</h3>
                             </form>
