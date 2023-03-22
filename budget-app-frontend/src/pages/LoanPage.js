@@ -23,7 +23,7 @@ export default function LoanPage() {
                 <hr />
             </h2>
 
-            <div style={{}}>
+            <div style={{ height: '100%' }}>
                 <div className="loan-form">
                     <form style={{ display: "block" }} onSubmit={handleSubmit}>
                         <div className="input-section">
@@ -34,7 +34,7 @@ export default function LoanPage() {
                         <div className="input-section">
 
                             <label htmlFor="term">Insert Loan Term in months:</label>
-                            <input id="term" type="number" step="0.01" />
+                           <span> <input id="term" type="number" step="0.01" /> </span>
                         </div>
                         <div className="input-section">
 
@@ -49,7 +49,7 @@ export default function LoanPage() {
                 </div>
 
                 <div className="loan-decor-container" >
-                <DecorCircle size={250} x={270} y={50} color={"#4CA7D5"} />
+                    <DecorCircle size={250} x={270} y={50} color={"#4CA7D5"} />
 
                     <DecorCircle size={400} x={70} y={150} color={"#F7D149"} /> {/* Yellow*/}
                     <DecorCircle size={200} x={0} y={400} color={"#6CB134"} />{/*Green*/}

@@ -14,7 +14,7 @@ code {
 
 @keyframes fadeIn {
   0% {
-    
+    color: #ffff;
     opacity: 0;
     top: 0;
     right: 0;

@@ -15,7 +15,13 @@
     height: 200px;
     padding: 40px;
 
-    
+
+}
+
+#isPlanned {
+    display: block;
+    width: 50%;
+    font-size: 15px;
 }
 
 .balance-page-input {
@@ -55,7 +61,7 @@
 .picTitle img{
     object-fit: contain;
     height: 90px;
-    
+
 }
 
 .circleOne {
@@ -65,7 +71,7 @@
     padding: 30px;
     background: #33826a;
     margin-left: 90px;
-    
+
 }
 
 .circleTwo {

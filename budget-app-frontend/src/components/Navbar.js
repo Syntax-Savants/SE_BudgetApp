@@ -19,7 +19,7 @@ function Navbar({ logged = true, pageID, extraElement }) {
                     <li><Link to="/balance">Balance Adjustments </Link></li>
 
                     <li ><Link to="/loan">Personal Loan Estimator</Link></li>
-                    <li><Link  to="/">Logout</Link></li>
+                    <li><Link to="/">Logout</Link></li>
                 </ul>
             </nav>
         );
@@ -30,7 +30,11 @@ function Navbar({ logged = true, pageID, extraElement }) {
 
             <ul className="navbar-links">
 
-                <li><Link to="/signup">Signup</Link></li>
+                <li>
+
+                    <Link to="/signup">Signup</Link>
+
+                </li>
             </ul>
         </nav>
     );
