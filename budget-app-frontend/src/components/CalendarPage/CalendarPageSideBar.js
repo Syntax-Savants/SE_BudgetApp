@@ -11,8 +11,11 @@ export default function CalendarPageSideBar({ reload }) {
 
     function addExpense() {
 
-        getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
-            "test", 0, testDate, 50));
+        getCurrentUser().removeBudgetAdjustmentByName("rent");
+
+        // getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
+        //     "test", 0, testDate, 50));
+
         reload(getCurrentUser().budgetAdjustments);
     }
     return (

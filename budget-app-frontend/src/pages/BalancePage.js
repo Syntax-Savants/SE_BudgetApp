@@ -28,6 +28,13 @@ export default function BalancePage() {
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
         navigate("/home");
     }
+
+    const removeAdjustment = (event) => {
+        event.preventDefault();
+        getCurrentUser().removeBudgetAdjustmentByName(event.target.removeText.value);
+        navigate("/home");
+
+    }
     return (
         <div>
             <Navbar />
@@ -121,13 +128,13 @@ export default function BalancePage() {
 
                 <div className="balance-page-input">
                     <div>
-                        <form style={{ display: "block" }}>
+                        <form style={{ display: "block" }} onSubmit={removeAdjustment}>
                             <lable>Need to Remove an Existing</lable>
                             <label>Expense or Balance? No</label>
                             <label>Problem!</label>
                             <br></br>
                             <label>Title:</label>
-                            <input type={"text"} />
+                            <input id="removeText" type={"text"} />
                             <button className="enterBalance">Remove Expense</button>
                         </form>
                     </div>
