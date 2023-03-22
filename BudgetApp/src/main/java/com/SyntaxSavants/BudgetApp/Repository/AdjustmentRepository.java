@@ -5,8 +5,11 @@ import com.SyntaxSavants.BudgetApp.Domain.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.Date;
+import java.time.*;
 @Repository
 public class AdjustmentRepository {
 
@@ -36,7 +39,7 @@ public class AdjustmentRepository {
                 resultSet.getString("username"),                //changed to getting string              //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));
+                resultSet.getInt("planned")));
         //return null; //preventing errors
 
     }
@@ -53,19 +56,41 @@ public class AdjustmentRepository {
                 resultSet.getString("username"),                   //changed to getting string             //getUser does not work
                 resultSet.getDate("date"),
                 resultSet.getFloat("amt"),
-                resultSet.getBoolean("planned")));
+                resultSet.getInt("planned")));
         //return null; //preventing errors
 
 
     }
 
-    public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, boolean planned) throws SQLException{
+    public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, int planned) throws SQLException{
         if (getOneAdjustment(id.floatValue()).isPresent()) {
             return false;
         };
-        String query = String.format("insert into adjustment values('%s', '%a', '%s', '%s', '%b', '%s", id,  amt, date, desc, planned, user);
+
+        System.out.println("Java Date: " + date);              //for testing purposes
+
+        java.util.Date temp = new Date(date.getTime() + (1000 * 60 * 60 * 24));
+        //System.out.println("Temp:" + temp);                    //for testing purposes
+
+        java.sql.Date sqlDate = new java.sql.Date(temp.getTime());
+        //System.out.println("SQL Date:" + sqlDate);             //for testing purposes
+        //System.out.println();
+
+        String query = String.format("insert into adjustment values('%s', '%s', '%s', '%s', '%s', '%s')", id,  amt, sqlDate, desc, planned, user);
         statement.executeUpdate(query);
         return true;
     }
+/*
+    fetch("http://localhost:8080/balance", {
+        method: "Post",
+                headers: {
+            "Content-Type": "application/json",
+                    "auth":"JohnDoe123:rootPW"
+        },
+        body: JSON.stringify({amt:550, date:"2017-05-04",description:"Test3",planned:0})
+    }).then((x)=> {
+        console.log(x)
+    })
+    */
 
 }
