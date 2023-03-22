@@ -1,0 +1,57 @@
+.HelpPage-header{
+    background-color: #33826a;
+    padding: 20px;
+    width: 1400px;
+    height: 75px;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 0;
+}
+
+    .subtitle{
+    color: #33826a;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #F2F2F2;
+}
+
+.body{
+    color: #797979;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #F2F2F2;
+}
+
+ul {
+    list-style: none;
+}
+
+.body ul li::before{
+    content: "\2022";
+    color: #33826a;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* .square {
+    width: 1250px;
+    height: 1000px;
+    background: #F2F2F2;
+    margin-left: 65px;
+    position: relative;
+} */
