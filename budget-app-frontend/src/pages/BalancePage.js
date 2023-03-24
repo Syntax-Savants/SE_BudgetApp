@@ -24,16 +24,21 @@ export default function BalancePage() {
         event.preventDefault();
 
         const type = event.target.isPlanned.value;
-        const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, 30);
+        const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, 5666);
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
         navigate("/home");
     }
 
     const removeAdjustment = (event) => {
         event.preventDefault();
-        getCurrentUser().removeBudgetAdjustmentByName(event.target.removeText.value);
-        navigate("/home");
+        if (getCurrentUser().removeBudgetAdjustmentByName(event.target.removeText.value))
+            navigate("/home");
 
+    }
+    const changeGoal = (event) => {
+        event.preventDefault();
+        getCurrentUser().monthlyGoal = event.target.goal.value;
+        navigate("/home");
     }
     return (
         <div>
@@ -92,12 +97,12 @@ export default function BalancePage() {
             <div className="balance-page-section">
                 <div className="balance-page-input">
                     <div>
-                        <form style={{ display: "block" }} onSubmit={addAdjustment}>
+                        <form style={{ display: "block" }} onSubmit={changeGoal}>
                             <label>Input Your Initial Balance:</label>
                             <label>Your initial balance should</label>
                             <label>indicate your starting balance.</label>
                             <br></br>
-                            <input type={"text"} />
+                            <input placeholder= {"$" +getCurrentUser().monthlyGoal}id='goal' type={"text"} />
                             <input value="enter" type={"Submit"} className="enterBalance" />
                         </form>
                     </div>
