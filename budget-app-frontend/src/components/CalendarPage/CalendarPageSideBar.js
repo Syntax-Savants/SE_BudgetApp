@@ -22,12 +22,12 @@ export default function CalendarPageSideBar({ reload }) {
         <div className="CSideBar">
             <div>
 
-                <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses())} label={"Monthly Expense"} style={{ display: 'block', margin: 'auto', backgroundColor: "#FFCF0D" }} />
+                <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses())} id={"Monthly expense"} label ={"Expenses this month: "} style={{ display: 'block', margin: 'auto', backgroundColor: "#f6bb1d" }} />
                 <div style={{ display: 'inline-block' }}>
 
-                    <SideBarInput label="My Goal is" display={Utils.formatMoney(getCurrentUser().monthlyGoal)} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0' }} />
+                    <SideBarInput id="My Goal is" label="Monthly budget is: "display={Utils.formatMoney(getCurrentUser().monthlyGoal)} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0' }} />
 
-                    <SideBarInput label="You are" display={getCurrentUser().getOverUnder()} style={{ margin: '0 0px 0 0' }} />
+                    <SideBarInput id="You are" display={getCurrentUser().getOverUnder()} style={{ margin: '0 0px 0 0' }} />
                 </div>
             </div>
             <div className="my-calendars">
