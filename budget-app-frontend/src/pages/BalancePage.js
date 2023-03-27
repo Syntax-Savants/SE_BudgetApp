@@ -24,8 +24,13 @@ export default function BalancePage() {
         event.preventDefault();
 
         const type = event.target.isPlanned.value;
-        const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, 5666);
+        const incomeOrExpense = event.target.expenseOrIncome.value;
+        const amount = event.target.amt.value;
+        const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, incomeOrExpense * amount);
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
+        if (incomeOrExpense == 0) {
+            getCurrentUser().monthlyGoal += amount;
+        }
         navigate("/home");
     }
 
@@ -75,7 +80,7 @@ export default function BalancePage() {
                         <form>
                             <div className="circleTwo"><img src={money} alt="money" /></div>
                             <br></br>
-                            <h3>Add Your Expense</h3>
+                            <h3>Add Your Adjustment</h3>
                         </form>
                     </div>
                 </div>
@@ -86,7 +91,7 @@ export default function BalancePage() {
                     <div>
                         <form>
                             <div className="circleThree"><img src={x} alt="x" /></div>
-                            <h3>Remove an Existing <br></br>Expense or Balance</h3>
+                            <h3>Remove an Existing <br></br>Expense or Income</h3>
                         </form>
                     </div>
                 </div>
@@ -102,8 +107,8 @@ export default function BalancePage() {
                             <label>Your initial balance should</label>
                             <label>indicate your starting balance.</label>
                             <br></br>
-                            <input placeholder= {"$" +getCurrentUser().monthlyGoal}id='goal' type={"text"} />
-                            <input  type={"Submit"} defaultValue ="Enter" className="enterBalance" />
+                            <input placeholder={"$" + getCurrentUser().monthlyGoal} id='goal' type={"text"} />
+                            <input type={"Submit"} defaultValue="Enter" className="enterBalance" />
                         </form>
                     </div>
                 </div >
@@ -116,15 +121,24 @@ export default function BalancePage() {
 
 
                             <label>Title:</label>
-                            <input id="name" type={"text"} />
+                            <input placeholder="Rent, School etc..." id="name" type={"text"} />
+                            <label>Amount:</label>
+                            <input placeholder="ex. 1000" id="amt" type={"number"} />
                             <label>Date:</label>
                             <DatePicker selected={date}
                                 onChange={(date) => setDate(date)} />
                             <label>Reoccurring?</label>
                             <input type={"text"} />
+
+
                             <select id="isPlanned">
                                 <option value={"0"}>Planned</option>
                                 <option value={"1"}>Unplanned</option>
+                            </select >
+
+                            <select id="expenseOrIncome">
+                                <option value={"1"}>Expense</option>
+                                <option value={"0"}>Income</option>
                             </select >
                             <button className="enterBalance">Add Expense</button>
                         </form>
@@ -150,13 +164,5 @@ export default function BalancePage() {
 
     );
 
-    function checkPlannedExpenses(value) {
-        console.log(value);
 
-    }
-
-    function checkUnplannedExpenses(value) {
-        console.log(value);
-
-    }
 }
