@@ -8,7 +8,6 @@ export default function LoanPage() {
         event.preventDefault();
 
         var monthlyPayment = calculateMonthlyPayment(event.target.amount.value, event.target.interest.value, event.target.term.value);
-        console.log(monthlyPayment);
         setMonthlyPayment(monthlyPayment);
 
         event.target.reset();
