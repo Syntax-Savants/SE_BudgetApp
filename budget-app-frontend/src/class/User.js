@@ -1,4 +1,3 @@
-import { BudgetAdjustment } from "./BudgetAdjustment"
 import { addBudgetAdjustmentToServer } from "../intergration/server";
 export class User {
     constructor(username, password, firstName, lastName, budgetAdjustments = []) {
@@ -11,19 +10,21 @@ export class User {
 
     }
 
-    getExpenses() {
+    getExpenses(month = new Date().getMonth()) {
         var expenseAmount = 0;
 
         this.budgetAdjustments.forEach((budget) => {
-            expenseAmount += budget.amount;
+
+            if (month === budget.date.getMonth())
+                expenseAmount += budget.amount;
         })
 
         return expenseAmount;
     }
 
-    getOverUnder() {
+    getOverUnder(month) {
 
-        let expenseAmount = this.getExpenses();
+        let expenseAmount = this.getExpenses(month);
 
         if (expenseAmount > this.monthlyGoal)
             return "You are OVER your monthly budget goal for this month by $" + Math.abs(this.monthlyGoal - this.getExpenses())
@@ -32,7 +33,7 @@ export class User {
 
     }
 
-    monthlyGoalMinusExpenses(){
+    monthlyGoalMinusExpenses() {
         return (this.monthlyGoal - this.getExpenses());
     }
 
@@ -42,7 +43,7 @@ export class User {
 
 
         for (let i = 0; i < this.budgetAdjustments.length; i++) {
-            if (this.budgetAdjustments[i].name.toLowerCase().trim() == name.toLowerCase().trim()) {
+            if (this.budgetAdjustments[i].name.toLowerCase().trim() === name.toLowerCase().trim()) {
                 this.budgetAdjustments.splice(i, 1);
                 this.save();
                 return true;

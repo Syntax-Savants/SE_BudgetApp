@@ -7,9 +7,10 @@ import * as Global from "../../Global"
 
 const testDate = new Date(2023, 1, 15);
 var budgetAdjustmentList;
-function CalendarComponent({ budgetAdjustments }) {
+function CalendarComponent({ budgetAdjustments, activeDate,changeActiveDate }) {
 
-    const [activeDate, changeActiveDate] = useState(new Date());
+
+    
     budgetAdjustmentList = budgetAdjustments;
 
     function cycleToNextMonth() {

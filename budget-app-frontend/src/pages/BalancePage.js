@@ -103,7 +103,7 @@ export default function BalancePage() {
                             <label>indicate your starting balance.</label>
                             <br></br>
                             <input placeholder= {"$" +getCurrentUser().monthlyGoal}id='goal' type={"text"} />
-                            <input value="enter" type={"Submit"} className="enterBalance" />
+                            <input  type={"Submit"} defaultValue ="Enter" className="enterBalance" />
                         </form>
                     </div>
                 </div >
@@ -111,8 +111,8 @@ export default function BalancePage() {
                 <div className="balance-page-input">
                     <div >
                         <form style={{ display: "block" }} onSubmit={addAdjustment}>
-                            <lable>Give Us More Information About </lable>
-                            <lable>Your Expense. </lable>
+                            <label>Give Us More Information About </label>
+                            <label>Your Expense. </label>
 
 
                             <label>Title:</label>
@@ -134,7 +134,7 @@ export default function BalancePage() {
                 <div className="balance-page-input">
                     <div>
                         <form style={{ display: "block" }} onSubmit={removeAdjustment}>
-                            <lable>Need to Remove an Existing</lable>
+                            <label>Need to Remove an Existing</label>
                             <label>Expense or Balance? No</label>
                             <label>Problem!</label>
                             <br></br>

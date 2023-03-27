@@ -8,13 +8,13 @@ export class BudgetAdjustment {
     constructor(name, type, date, amount) {
         this.name = name;
         this.date = date;
-
+        date = new Date().getMonth()
         this.amount = amount;
         this.type = type;
-        if (this.type == 0) {
+        if (this.type === 0) {
             this.color = PLANNED_COLOR;
 
-        } else if (this.type == 1) {
+        } else if (this.type === 1) {
             this.color = UNPLANNED_COLOR;
         } else {
             this.color = OTHER_COLOR;
@@ -23,7 +23,7 @@ export class BudgetAdjustment {
 
     }
 
-    CalendarElement =() => {
+    CalendarElement = () => {
         return (<div className='budget-adjustment' style={{ backgroundColor: this.color }}><p>{this.name}</p></div >);
 
     }
