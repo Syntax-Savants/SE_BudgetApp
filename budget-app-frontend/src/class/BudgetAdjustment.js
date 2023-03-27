@@ -21,6 +21,7 @@ export class BudgetAdjustment {
 
         }
 
+        this.isIncome = amount < 0;
     }
 
     CalendarElement = () => {

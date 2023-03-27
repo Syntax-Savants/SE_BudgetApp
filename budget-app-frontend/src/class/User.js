@@ -15,11 +15,23 @@ export class User {
 
         this.budgetAdjustments.forEach((budget) => {
 
-            if (month === budget.date.getMonth())
+            if (month === budget.date.getMonth() && !budget.isIncome)
                 expenseAmount += budget.amount;
         })
 
         return expenseAmount;
+    }
+
+    getIncome(month) {
+        var incomeAmount = 0;
+
+        this.budgetAdjustments.forEach((budget) => {
+
+            if (month === budget.date.getMonth() && budget.isIncome)
+                incomeAmount = -budget.amount;
+        })
+
+        return incomeAmount;
     }
 
     getOverUnder(month) {

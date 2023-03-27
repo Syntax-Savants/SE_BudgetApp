@@ -28,9 +28,7 @@ export default function BalancePage() {
         const amount = event.target.amt.value;
         const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, incomeOrExpense * amount);
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
-        if (incomeOrExpense == 0) {
-            getCurrentUser().monthlyGoal += amount;
-        }
+
         navigate("/home");
     }
 
@@ -138,7 +136,7 @@ export default function BalancePage() {
 
                             <select id="expenseOrIncome">
                                 <option value={"1"}>Expense</option>
-                                <option value={"0"}>Income</option>
+                                <option value={"-1"}>Income</option>
                             </select >
                             <button className="enterBalance">Add Expense</button>
                         </form>
