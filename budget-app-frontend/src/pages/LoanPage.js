@@ -3,12 +3,13 @@ import "./LoanPage.css";
 import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';
 import DecorCircle from "../components/CalendarPage/DecorCircle";
+import { getCurrentUser } from "../Global"
+
 export default function LoanPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
         var monthlyPayment = calculateMonthlyPayment(event.target.amount.value, event.target.interest.value, event.target.term.value);
-        console.log(monthlyPayment);
         setMonthlyPayment(monthlyPayment);
 
         event.target.reset();
@@ -33,19 +34,20 @@ export default function LoanPage() {
 
                         <div className="input-section">
 
-                            <label htmlFor="term">Insert Loan Term in months:</label>
+                            <label htmlFor="term">Insert Loan Term in Months:</label>
                            <span> <input id="term" type="number" step="0.01" /> </span>
                         </div>
                         <div className="input-section">
 
-                            <label htmlFor="interest">Insert Interest Rate:</label>
+                            <label htmlFor="interest">Insert Annual Interest Rate:</label>
                             <input placeholder="" id="interest" type="number" step="0.01" />
                         </div>
                         <input className="loan-button" type={"submit"} value="View Rates" />
                         <input className="loan-button" type={"submit"} value="Help Me Decide" />
 
                     </form>
-                    <p style={{ fontSize: '25px' }}>Your Monthly Payment is: {monthlyPayment} </p>
+                    <p style={{ fontSize: '25px' }}>{formatMonthlyPayment(monthlyPayment)} </p>
+                    <p style={{ fontSize: '25px' }}>{fitsWithBudget(monthlyPayment)} </p>
                 </div>
 
                 <div className="loan-decor-container" >
@@ -91,6 +93,29 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
     if (isNaN(monthlyPayment) || monthlyPayment <= 0) {
         return "Invaild input";
     }
-    return Utils.formatMoney(monthlyPayment);
+    return (monthlyPayment);
+
+}
+function formatMonthlyPayment(monthlyPayment){
+    if(monthlyPayment >= 0)
+        return "Your Monthly Payment is: " + Utils.formatMoney(monthlyPayment);
+    else 
+        return ""; 
+}
+function fitsWithBudget(monthlyPayment){
+    //const monthlyPayment 
+    //console.log("monthly payment is: " + monthlyPayment)
+    var userBudgetBalance = Number(getCurrentUser().monthlyGoalMinusExpenses())
+    console.log("userBudgetBalance is: " + userBudgetBalance) 
+    console.log("monthly payment is: " + monthlyPayment ) //issue with subtraction is that formatted as money can't
+    userBudgetBalance =  (userBudgetBalance - (monthlyPayment));
+    console.log("userBudgetBalance after subtraction is: " + userBudgetBalance)
+
+    if (userBudgetBalance >= 0)
+        return "You will have " + Utils.formatMoney(userBudgetBalance) + " left in your monthly budget if you accept this loan.";
+    else if (userBudgetBalance < 0)
+        return "This loan is not reccomended as it would cause your monthly budget to become negative.";
+    else
+        return "";
 
 }
