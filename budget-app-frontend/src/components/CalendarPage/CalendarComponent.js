@@ -44,8 +44,6 @@ function getTile({ activeStartDate, date, view }) {
     budgetAdjustmentList.forEach(function (adjustment) {
 
         if (utils.isSameDay(date, adjustment.date)) {
-            console.log(adjustment.date);
-
             returnValue = adjustment.CalendarElement();
         }
     });

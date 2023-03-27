@@ -62,6 +62,7 @@ export class User {
         this.save();
     }
 
+
     BudgetAdjustmentList() {
         const listItems = this.budgetAdjustments.map((e) =>
             <li>{e.CalendarElement()}</li>
