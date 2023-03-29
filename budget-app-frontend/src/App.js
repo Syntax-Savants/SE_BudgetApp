@@ -10,6 +10,7 @@ import SignupPage from './pages/SignUpPage';
 
 import User from './class/User';
 import { setCurrentUser } from './Global';
+import HelpPage from './pages/HelpPage';
 function App() {
   useEffect(() => {
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="loan" element={<LoanPage />} />
       <Route path="balance" element={<BalancePage />} />
       <Route path="signup" element={<SignupPage />} />
+      <Route path="/loan/help" element={<HelpPage />} />
 
     </Routes>);
 }

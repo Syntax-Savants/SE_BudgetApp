@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import * as Utils from '../utils/Utils';
 import DecorCircle from "../components/CalendarPage/DecorCircle";
 import { getCurrentUser } from "../Global"
+import { Link } from "react-router-dom";
 
 export default function LoanPage() {
     const handleSubmit = (event) => {
@@ -43,7 +44,7 @@ export default function LoanPage() {
                             <input placeholder="" id="interest" type="number" step="0.01" />
                         </div>
                         <input className="loan-button" type={"submit"} value="View Rates" />
-                        <input className="loan-button" type={"submit"} value="Help Me Decide" />
+                        <Link className="loan-button" to = "/loan/help" value="Help Me Decide" >help me decide</Link>
 
                     </form>
                     <p style={{ fontSize: '25px' }}>{formatMonthlyPayment(monthlyPayment)} </p>
