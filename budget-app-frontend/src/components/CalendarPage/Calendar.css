@@ -115,7 +115,13 @@
     color: rgba(157, 157, 157, 0.5);
     background-color: rgb(216, 216, 216);
 }
+.ba-list{
+    margin: 20% 0;
+    padding: 0;
+    overflow: auto !important;
+    height: 70%;
 
+}
 .budget-adjustment {
     padding: 1px 20px;
     color: white;
@@ -125,9 +131,3 @@
 
 }
 
-.budget-adjustment-list {
-    margin-top: 30%;
-    overflow: auto !important;
-        height: 55%;
-
-}

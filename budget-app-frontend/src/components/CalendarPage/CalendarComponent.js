@@ -7,10 +7,8 @@ import * as Global from "../../Global"
 
 const testDate = new Date(2023, 1, 15);
 var budgetAdjustmentList;
-function CalendarComponent({ budgetAdjustments, activeDate,changeActiveDate }) {
+function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) {
 
-
-    
     budgetAdjustmentList = budgetAdjustments;
 
     function cycleToNextMonth() {
@@ -42,15 +40,24 @@ function CalendarComponent({ budgetAdjustments, activeDate,changeActiveDate }) {
 function getTile({ activeStartDate, date, view }) {
 
     var returnValue;
+    var adjustmentsForDay = [];
     budgetAdjustmentList.forEach(function (adjustment) {
 
         if (utils.isSameDay(date, adjustment.date)) {
-            returnValue = adjustment.CalendarElement();
+            adjustmentsForDay.push(adjustment);
         }
     });
 
-    return returnValue;
+    returnValue = adjustmentsForDay.map(
+        (budgetAdjustment) => {
+            return (
+                    <li key={budgetAdjustment.name} className='budget-adjustment' style={{ backgroundColor: budgetAdjustment.color }}><p>{budgetAdjustment.name}</p></li >
+            )
+        }
+    )
+    return (<ul className='ba-list'>{returnValue}</ul>);
 }
+
 
 
 function CalendarCycler({ date, nextMonth, prevMonth }) {

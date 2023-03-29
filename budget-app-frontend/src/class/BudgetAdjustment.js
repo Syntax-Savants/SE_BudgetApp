@@ -24,8 +24,5 @@ export class BudgetAdjustment {
         this.isIncome = amount < 0;
     }
 
-    CalendarElement = () => {
-        return (<div className='budget-adjustment' style={{ backgroundColor: this.color }}><p>{this.name}</p></div >);
 
-    }
 }
