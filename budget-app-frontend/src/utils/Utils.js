@@ -31,13 +31,6 @@ export function tileClassName({ activeStartDate, date, view }) {
     }
 }
 
-export function Day({ date, view }) {
-    return (
-
-        <div className='test' onMouseEnter={console.log(date.getDate())}> {view}</div>
-    )
-}
-
 //convert month to string
 
 export function getMonthName(month) {

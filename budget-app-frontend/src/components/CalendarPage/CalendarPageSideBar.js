@@ -11,13 +11,11 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
 
         // getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
         //     "test", 0, testDate, 50));
-        console.log("currentMonth: " + currentMonth);
 
     }
 
     function checkPlannedExpenses(value) {
         showPlanned = value;
-        console.log("value " + showPlanned)
 
         setBudgetAdjustments(showUnplanned, showPlanned, showPlanned )
     }

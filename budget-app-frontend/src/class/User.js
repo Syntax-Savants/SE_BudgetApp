@@ -1,7 +1,7 @@
 import { addBudgetAdjustmentToServer } from "../intergration/server";
 import { BudgetAdjustment } from "./BudgetAdjustment";
 export class User {
-    constructor(username, password, firstName, lastName, budgetAdjustments = [new BudgetAdjustment("Planned", 0, new Date(2023, 2, 29), 1000), new BudgetAdjustment("unplanned", 1, new Date(2023, 2, 29), 1000)]) {
+    constructor(username, password, firstName, lastName, budgetAdjustments = []) {
         this.username = username;
         this.firstName = firstName;
         this.password = password;
@@ -46,7 +46,6 @@ export class User {
 
 
     getBudgetAdjustments({ showUnplanned = true, showPlanned = true }) {
-        console.log("Show Planned: " + showPlanned, "Show Unplanned: " + showUnplanned);
         if (showUnplanned && showPlanned)
             return this.budgetAdjustments;
 
