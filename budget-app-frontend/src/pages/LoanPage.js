@@ -44,7 +44,7 @@ export default function LoanPage() {
                             <input placeholder="" id="interest" type="number" step="0.01" />
                         </div>
                         <input className="loan-button" type={"submit"} value="View Rates" />
-                        <Link className="loan-button" to = "/loan/help" value="Help Me Decide" >help me decide</Link>
+                        <Link className="loan-button" to = "/loan/help" value="Help Me Decide" >Help Me Decide</Link>
 
                     </form>
                     <p style={{ fontSize: '25px' }}>{formatMonthlyPayment(monthlyPayment)} </p>
@@ -100,14 +100,14 @@ function calculateMonthlyPayment(loanAmount, interestRate, loanTerm) {
 function formatMonthlyPayment(monthlyPayment){
     if(monthlyPayment >= 0)
         return "Your Monthly Payment is: " + Utils.formatMoney(monthlyPayment);
-    else 
-        return ""; 
+    else
+        return "";
 }
 function fitsWithBudget(monthlyPayment){
-    //const monthlyPayment 
+    //const monthlyPayment
     //console.log("monthly payment is: " + monthlyPayment)
     var userBudgetBalance = Number(getCurrentUser().monthlyGoalMinusExpenses())
-    console.log("userBudgetBalance is: " + userBudgetBalance) 
+    console.log("userBudgetBalance is: " + userBudgetBalance)
     console.log("monthly payment is: " + monthlyPayment ) //issue with subtraction is that formatted as money can't
     userBudgetBalance =  (userBudgetBalance - (monthlyPayment));
     console.log("userBudgetBalance after subtraction is: " + userBudgetBalance)

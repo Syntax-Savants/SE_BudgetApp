@@ -6,8 +6,8 @@ import * as utils from '../../utils/Utils.js';
 import * as Global from "../../Global"
 
 const testDate = new Date(2023, 1, 15);
-var budgetAdjustmentList;
 function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) {
+    var budgetAdjustmentList;
 
     budgetAdjustmentList = budgetAdjustments;
 
@@ -19,6 +19,28 @@ function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) 
 
         changeActiveDate(new Date(activeDate.setMonth(activeDate.getMonth() - 1)));
     }
+    function getTile({ activeStartDate, date, view }) {
+
+        var returnValue;
+        var adjustmentsForDay = [];
+        budgetAdjustmentList.forEach(function (adjustment) {
+
+            if (utils.isSameDay(date, adjustment.date)) {
+                adjustmentsForDay.push(adjustment);
+            }
+        });
+
+        returnValue = adjustmentsForDay.map(
+            (budgetAdjustment) => {
+                return (
+                    <li key={budgetAdjustment.name} className='budget-adjustment' style={{ backgroundColor: budgetAdjustment.color }}><p>{budgetAdjustment.name}</p></li >
+                )
+            }
+        )
+        return (<ul className='ba-list'>{returnValue}</ul>);
+    }
+
+
     return (
         <div className="Sample">
             <div className="Sample__container">
@@ -35,27 +57,6 @@ function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) 
             </div>
         </div>
     );
-}
-
-function getTile({ activeStartDate, date, view }) {
-
-    var returnValue;
-    var adjustmentsForDay = [];
-    budgetAdjustmentList.forEach(function (adjustment) {
-
-        if (utils.isSameDay(date, adjustment.date)) {
-            adjustmentsForDay.push(adjustment);
-        }
-    });
-
-    returnValue = adjustmentsForDay.map(
-        (budgetAdjustment) => {
-            return (
-                    <li key={budgetAdjustment.name} className='budget-adjustment' style={{ backgroundColor: budgetAdjustment.color }}><p>{budgetAdjustment.name}</p></li >
-            )
-        }
-    )
-    return (<ul className='ba-list'>{returnValue}</ul>);
 }
 
 

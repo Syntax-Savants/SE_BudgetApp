@@ -3,14 +3,31 @@ import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
 
 import { getCurrentUser } from "../../Global"
-
-export default function CalendarPageSideBar({ currentMonth }) {
+let showPlanned;
+let showUnplanned;
+export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments, showPlanned, showUnplanned }) {
 
     function addExpense() {
-   
+
         // getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
         //     "test", 0, testDate, 50));
         console.log("currentMonth: " + currentMonth);
+
+    }
+
+    function checkPlannedExpenses(value) {
+        showPlanned = value;
+        console.log("value " + showPlanned)
+
+        setBudgetAdjustments(showUnplanned, showPlanned, showPlanned )
+    }
+
+
+
+    function checkUnplannedExpenses(value) {
+        showUnplanned = value;
+        setBudgetAdjustments(showUnplanned, showPlanned, showPlanned )
+
 
     }
     return (
@@ -28,8 +45,8 @@ export default function CalendarPageSideBar({ currentMonth }) {
             <div className="my-calendars">
                 <h3>My Calendars</h3>
 
-                <Checkbox onChange={checkPlannedExpenses} textColor={"#06AADA"} text={"Planned Expenses"} />
-                <Checkbox onChange={checkUnplannedExpenses} textColor={"#70C02F"} text={"Unplanned Expenses"} />
+                <Checkbox onChange={checkPlannedExpenses} textColor={"#06AADA"} text={"Planned Expenses"} intitalValue = {showPlanned} />
+                <Checkbox onChange={checkUnplannedExpenses} textColor={"#70C02F"} text={"Unplanned Expenses"} intitalValue = {showUnplanned} />
 
                 <button onClick={addExpense} className="login-button">Add Expense</button>
             </div>
@@ -37,15 +54,7 @@ export default function CalendarPageSideBar({ currentMonth }) {
     );
 };
 
-function checkPlannedExpenses(value) {
-    console.log(value);
 
-}
-
-function checkUnplannedExpenses(value) {
-    console.log(value);
-
-}
 
 function SideBarInput({ display, label, style }) {
 

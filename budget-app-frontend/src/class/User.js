@@ -1,13 +1,13 @@
 import { addBudgetAdjustmentToServer } from "../intergration/server";
+import { BudgetAdjustment } from "./BudgetAdjustment";
 export class User {
-    constructor(username, password, firstName, lastName, budgetAdjustments = []) {
+    constructor(username, password, firstName, lastName, budgetAdjustments = [new BudgetAdjustment("Planned", 0, new Date(2023, 2, 29), 1000), new BudgetAdjustment("unplanned", 1, new Date(2023, 2, 29), 1000)]) {
         this.username = username;
         this.firstName = firstName;
         this.password = password;
         this.lastName = lastName;
         this.budgetAdjustments = budgetAdjustments;
         this.monthlyGoal = 1000;
-
     }
 
     getExpenses(month = new Date().getMonth()) {
@@ -42,17 +42,24 @@ export class User {
             return "You are OVER your monthly budget goal for this month by $" + Math.abs(this.monthlyGoal - expenseAmount)
         else
             return "You will have $" + (this.monthlyGoal - expenseAmount) + " of savings at the end of this month.";
-
     }
 
+
+    getBudgetAdjustments({ showUnplanned = true, showPlanned = true }) {
+        console.log("Show Planned: " + showPlanned, "Show Unplanned: " + showUnplanned);
+        if (showUnplanned && showPlanned)
+            return this.budgetAdjustments;
+
+        return this.budgetAdjustments.filter((budget) => {
+            return (budget.type == 0 && showPlanned) || (budget.type == 1 && showUnplanned);
+        })
+    }
     monthlyGoalPlusIncome(month) {
         return (this.monthlyGoal + this.getIncome(month))
     }
     monthlyGoalMinusExpenses() {
         return (this.monthlyGoal - this.getExpenses());
     }
-
-
 
     removeBudgetAdjustmentByName(name) {
 
@@ -79,12 +86,7 @@ export class User {
     }
 
 
-    BudgetAdjustmentList() {
-        const listItems = this.budgetAdjustments.map((e) =>
-            <li>{e.CalendarElement()}</li>
-        );
-        return <div> {listItems}</div>
-    }
+
 
 
 }

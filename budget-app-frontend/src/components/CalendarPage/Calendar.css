@@ -123,11 +123,14 @@
 
 }
 .budget-adjustment {
-    padding: 1px 20px;
+    padding: 0.02px 6px;
     color: white;
     margin: auto;
+    text-align: center;
     border-radius: 30%;
     text-transform: capitalize !important;
-
+    max-width: 70%;
+    overflow: hidden;
+    font-size: 12px;
 }
 

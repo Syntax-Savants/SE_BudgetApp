@@ -7,10 +7,15 @@ import { getCurrentUser } from "../Global";
 import React, { useState } from 'react';
 function CalendarPage() {
 
-    console.log("Welcome to Calendar page " + getCurrentUser().firstName);
     const [activeDate, changeActiveDate] = useState(new Date());
-    const [budgetAdjustments, setBudgetAdjustments] = useState(getCurrentUser().budgetAdjustments);
+    const [showPlanned, setShowPlanned] = useState(true);
+    const [showUnplanned, setShowUnplanned] = useState(true);
 
+    var budgetAdjustments = getCurrentUser().getBudgetAdjustments({ showPlanned: showPlanned, showUnplanned: showUnplanned })
+    function setPlannedUnplanned(p, u) {
+        setShowPlanned(p);
+        setShowUnplanned(u);
+    }
     return (
         <div className="" style={{ height: '100%' }}>
 
@@ -20,7 +25,7 @@ function CalendarPage() {
 
             </h2>
             <div style={{ margin: 0, padding: 0 }}>
-                <CalendarPageSideBar currentMonth={activeDate.getMonth()} />
+                <CalendarPageSideBar currentMonth={activeDate.getMonth()} setBudgetAdjustments={setPlannedUnplanned} showPlanned ={showPlanned} showUnplanned = {showUnplanned} />
 
                 <CalendarComponent budgetAdjustments={budgetAdjustments} activeDate={activeDate} changeActiveDate={changeActiveDate} />
             </div>
