@@ -33,7 +33,6 @@ public class UserController {
     @PostMapping("/user")
     @CrossOrigin
     public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) throws SQLException {
-    public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) throws SQLException {
         User u = new User();
 
         u.setFirst_name(request.getFirst_name());

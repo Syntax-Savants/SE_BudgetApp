@@ -1,25 +1,31 @@
-.subTitle{
+.subTitle {
     color: #33826a;
     text-align: left;
     margin-top: 0;
     margin-left: 20px;
 }
 
-.picTitle{
+.picTitle {
     color: #33826a;
     text-align: center;
-    margin-top: 0;
-    margin-left: 0;
+    margin-right: 50px;
     display: inline-block;
-    margin: 30px;
-    width: 250px;
+    margin: 10px;
+    width: 330px;
     height: 200px;
-    padding: 50px;
-    
+    padding: 40px;
+
+
+}
+
+balance-page-input select {
+    margin-top: 100px;
+    display: block;
+    width: 50%;
+    font-size: 15px;
 }
 
 .balance-page-input {
-
     color: black;
     width: 250px;
     height: 350px;
@@ -31,7 +37,7 @@
 }
 
 
-.balance-page-input label{
+.balance-page-input label {
     display: block;
     text-align: left;
 }
@@ -41,7 +47,7 @@
     width: fit-content;
 }
 
-.enterBalance{
+.enterBalance {
     margin-top: 10px;
     font-size: 13px;
     border-width: 1px;
@@ -52,10 +58,10 @@
     height: 30px;
 }
 
-.picTitle img{
+.picTitle img {
     object-fit: contain;
     height: 90px;
-    
+
 }
 
 .circleOne {
@@ -64,8 +70,8 @@
     height: 100px;
     padding: 30px;
     background: #33826a;
-    margin-left: 50px;
-    
+    margin-left: 90px;
+
 }
 
 .circleTwo {
@@ -74,7 +80,7 @@
     height: 100px;
     padding: 30px;
     background: #52b300;
-    margin-left: 50px;
+    margin-left: 85px;
 }
 
 .circleThree {
@@ -83,5 +89,5 @@
     height: 100px;
     padding: 30px;
     background: #08a8da;
-    margin-left: 50px;
-  }
+    margin-left: 90px;
+}

@@ -49,10 +49,10 @@ public class AdjustmentController {
         t.setAmt(request.getAmt());
         t.setDate(request.getDate());
         t.setDescription(request.getDescription());
-        t.setPlanned(request.isPlanned());
+        t.setPlanned(request.getPlanned());
         t.setUser_username(userOptional.get().getUsername());     //changed to fit change to string data type
 
-        if(adjustmentRepository.createAdjustment(t.getId(), t.getDescription(), t.getUser_username(),  t.getDate(), t.getAmt(), t.isPlanned())) {
+        if(adjustmentRepository.createAdjustment(t.getId(), t.getDescription(), t.getUser_username(),  t.getDate(), t.getAmt(), t.getPlanned())) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.FORBIDDEN);

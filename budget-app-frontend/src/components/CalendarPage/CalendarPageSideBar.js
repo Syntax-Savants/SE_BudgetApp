@@ -1,30 +1,28 @@
 import "./CalendarPageSideBar.css"
 import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
-import { BudgetAdjustment } from "../../class/BudgetAdjustment"
 
 import { getCurrentUser } from "../../Global"
-import { useEffect } from "react";
-const testDate = new Date(2023, 2, 3);
 
-export default function CalendarPageSideBar({ reload }) {
+export default function CalendarPageSideBar({ currentMonth }) {
 
     function addExpense() {
+   
+        // getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
+        //     "test", 0, testDate, 50));
+        console.log("currentMonth: " + currentMonth);
 
-        getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
-            "test", 0, testDate, 50));
-        reload(getCurrentUser().budgetAdjustments);
     }
     return (
         <div className="CSideBar">
             <div>
 
-                <SideBarInput display={Utils.formatMoney(10)} label={"My Savings Goal"} style={{ display: 'block', margin: 'auto', backgroundColor: "#FFCF0D" }} />
+                <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses(currentMonth))} id={"Monthly expense"} label={"Expenses this month: "} style={{ display: 'block', margin: 'auto', backgroundColor: "#f6bb1d", fontWeight: 'bold' }} />
                 <div style={{ display: 'inline-block' }}>
 
-                    <SideBarInput label="My Goal is..." display={Utils.formatMoney(2500)} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0' }} />
+                    <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoal + getCurrentUser().getIncome(currentMonth))} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
 
-                    <SideBarInput label="You are" display={"Under"} style={{ margin: '0 0px 0 0' }} />
+                    <SideBarInput id="You are" display={getCurrentUser().getOverUnder(currentMonth)} style={{ margin: '0 0px 0 0', fontWeight: 'bold' }} />
                 </div>
             </div>
             <div className="my-calendars">

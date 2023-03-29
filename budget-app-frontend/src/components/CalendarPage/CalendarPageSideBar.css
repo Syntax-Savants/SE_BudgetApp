@@ -5,6 +5,8 @@
     margin: 50px;
     position: relative;
     margin-right: 0;
+    animation-name: fadeIn;
+    animation-duration: 2s;
 }
 
 .my-calendars h3 {
@@ -37,6 +39,7 @@
     width: 160px;
     height: 160px;
     transition: 0.3s;
+    vertical-align: top;
 }
 
 .CSideBar-input:hover {

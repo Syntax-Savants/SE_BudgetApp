@@ -8,8 +8,8 @@ import React, { useState } from 'react';
 function CalendarPage() {
 
     console.log("Welcome to Calendar page " + getCurrentUser().firstName);
+    const [activeDate, changeActiveDate] = useState(new Date());
     const [budgetAdjustments, setBudgetAdjustments] = useState(getCurrentUser().budgetAdjustments);
-    console.log("test"  + budgetAdjustments);
 
     return (
         <div className="" style={{ height: '100%' }}>
@@ -20,9 +20,9 @@ function CalendarPage() {
 
             </h2>
             <div style={{ margin: 0, padding: 0 }}>
-                <CalendarPageSideBar reload={setBudgetAdjustments} />
+                <CalendarPageSideBar currentMonth={activeDate.getMonth()} />
 
-                <CalendarComponent budgetAdjustments={budgetAdjustments} />
+                <CalendarComponent budgetAdjustments={budgetAdjustments} activeDate={activeDate} changeActiveDate={changeActiveDate} />
             </div>
         </div>);
 }

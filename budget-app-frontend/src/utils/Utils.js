@@ -89,5 +89,9 @@ export function serializeDate(date) {
     return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 }
 
+export function dayRemainingInMonth(date) {
 
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    return lastDayOfMonth - date.getDate();
+}
 

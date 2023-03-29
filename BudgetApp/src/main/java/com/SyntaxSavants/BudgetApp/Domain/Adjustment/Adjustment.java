@@ -28,5 +28,5 @@ public class Adjustment {
 
     private float amt;
 
-    private boolean planned;
+    private int planned;
 }

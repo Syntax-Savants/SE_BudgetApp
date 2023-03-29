@@ -12,6 +12,19 @@ code {
     monospace;
 }
 
+@keyframes fadeIn {
+  0% {
+    color: #ffff;
+    opacity: 0;
+    top: 0;
+    right: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 html {
   height: 100%;
 }

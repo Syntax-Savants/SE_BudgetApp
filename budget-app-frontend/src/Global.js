@@ -14,22 +14,23 @@ export function setCurrentUser(user) {
 }
 
 export function getCurrentUser() {
-    if (bypassServer) {
-
-        return (new User("username", "password","test", "test"));
-    }
 
     if (currentUser != null) {
 
         return currentUser;
+    }  if (bypassServer) {
+
+        currentUser = (new User("username", "password", "test", "test"));
+        return currentUser;
     }
+
 
     console.log("Getting user from local storage");
 
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
         const foundUser = JSON.parse(loggedInUser);
-        currentUser = new User(foundUser.username, foundUser.password,foundUser.firstName, foundUser.lastName);
+        currentUser = new User(foundUser.username, foundUser.password, foundUser.firstName, foundUser.lastName);
 
         return currentUser;
     }
