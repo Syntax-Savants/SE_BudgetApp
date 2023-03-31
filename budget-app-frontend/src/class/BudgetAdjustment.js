@@ -16,9 +16,6 @@ export class BudgetAdjustment {
 
         } else if (this.type === 1) {
             this.color = UNPLANNED_COLOR;
-        } else {
-            this.color = OTHER_COLOR;
-
         }
 
         this.isIncome = amount < 0;

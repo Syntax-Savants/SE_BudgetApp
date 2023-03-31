@@ -66,7 +66,7 @@ export default function BalancePage() {
                         <form>
                             <div className="circleOne"><img src={scale} alt="scale" /></div>
                             <br></br>
-                            <h3>Your Balance</h3>
+                            <h3>Your Monthly Goal</h3>
                         </form>
                     </div>
                 </div>
@@ -101,9 +101,9 @@ export default function BalancePage() {
                 <div className="balance-page-input">
                     <div>
                         <form style={{ display: "block" }} onSubmit={changeGoal}>
-                            <label>Input Your Initial Balance:</label>
-                            <label>Your initial balance should</label>
-                            <label>indicate your starting balance.</label>
+                            <label>Input Your Monthly Goal Balance:</label>
+                            <label>This will carry over each month</label>
+
                             <br></br>
                             <input placeholder={"$" + getCurrentUser().monthlyGoal} id='goal' type={"text"} />
                             <input type={"Submit"} defaultValue="Enter" className="enterBalance" />

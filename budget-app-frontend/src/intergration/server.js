@@ -56,7 +56,7 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     const password = user.password;
     const date = serializeDate(adjustment.date);
     const value = adjustment.amount;
-    const isPlanned = adjustment.type = 0 ? true : false;
+    const isPlanned = adjustment.type == 0 ? true : false;
     var request = new XMLHttpRequest();
 
 
@@ -102,7 +102,7 @@ export const Login = async (username, password) => {
     var header = `${username}:${password}`;
     var response = await getUserFromHeader(header);
 
-    
+
     console.log("User from header: " + response);
 
 
