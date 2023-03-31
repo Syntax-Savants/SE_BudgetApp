@@ -22,6 +22,17 @@ public class AdjustmentController {
     @Autowired
     private AuthenticationService authentication;
 
+    @GetMapping("/currentBalance")
+    @CrossOrigin
+    public ResponseEntity<?> getCurrentBalance(@RequestHeader String auth) throws SQLException {
+        Optional<User> userOptional = authentication.authenticateUser(auth);
+        if (userOptional.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOptional.get();
+        return null;    //in progress
+
+    }
     @GetMapping("/balance")
     @CrossOrigin
     public ResponseEntity<List<Adjustment>> getAdjustments(@RequestHeader String auth) throws SQLException {
