@@ -35,7 +35,7 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
                 <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses(currentMonth))} id={"Monthly expense"} label={"Expenses this month: "} style={{ display: 'block', margin: 'auto', backgroundColor: "#f6bb1d", fontWeight: 'bold' }} />
                 <div style={{ display: 'inline-block' }}>
 
-                    <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoal + getCurrentUser().getIncome(currentMonth))} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
+                    <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoalPlusIncome())} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
 
                     <SideBarInput id="You are" display={getCurrentUser().getOverUnder(currentMonth)} style={{ margin: '0 0px 0 0', fontWeight: 'bold' }} />
                 </div>

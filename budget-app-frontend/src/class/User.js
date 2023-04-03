@@ -26,12 +26,11 @@ export class User {
         var incomeAmount = 0;
 
         this.budgetAdjustments.forEach((budget) => {
-
             if (month === budget.date.getMonth() && budget.isIncome)
                 incomeAmount = -budget.amount;
         })
 
-        return incomeAmount;
+        return Number(incomeAmount);
     }
 
     getOverUnder(month) {
@@ -54,7 +53,7 @@ export class User {
         })
     }
     monthlyGoalPlusIncome(month) {
-        return (this.monthlyGoal + this.getIncome(month))
+        return (Number(this.monthlyGoal) + Number(this.getIncome(month)))
     }
     monthlyGoalMinusExpenses() {
         return (this.monthlyGoal - this.getExpenses());

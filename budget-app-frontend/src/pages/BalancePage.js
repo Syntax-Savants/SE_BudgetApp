@@ -67,7 +67,7 @@ export default function BalancePage() {
         event.preventDefault();
         const title = event.target.removeText.value;
         if (!title) {
-            setHeaderText("Please enter an adjustment you want to remove.");
+            setHeaderText("Please enter an a you want to remove.");
             return;
         }
         if (getCurrentUser().removeBudgetAdjustmentByName(title))
@@ -80,7 +80,8 @@ export default function BalancePage() {
     }
     const changeGoal = (event) => {
         event.preventDefault();
-        getCurrentUser().monthlyGoal = event.target.goal.value;
+        if (event.target.goal.value)
+            getCurrentUser().monthlyGoal = event.target.goal.value;
         navigate("/home");
     }
     return (
