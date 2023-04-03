@@ -18,6 +18,7 @@ export default function BalancePage() {
 
 
     const [date, setDate] = useState(new Date());
+    const [headerText, setHeaderText] = useState("");
     const navigate = useNavigate();
 
     const addAdjustment = (event) => {
@@ -26,9 +27,14 @@ export default function BalancePage() {
         const type = event.target.isPlanned.value;
         const incomeOrExpense = event.target.expenseOrIncome.value;
         const amount = event.target.amt.value;
-        const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, incomeOrExpense * amount);
+        const name = event.target.name.value;
+        const budgetAdjustment = new BudgetAdjustment(name, type, date, incomeOrExpense * amount);
         const doReoccur = event.target.reoccuringTime.value;
 
+        if (!name || !amount) {
+            setHeaderText("Please enter all values.");
+            return;
+        }
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
 
 
@@ -59,8 +65,17 @@ export default function BalancePage() {
 
     const removeAdjustment = (event) => {
         event.preventDefault();
-        if (getCurrentUser().removeBudgetAdjustmentByName(event.target.removeText.value))
+        const title = event.target.removeText.value;
+        if (!title) {
+            setHeaderText("Please enter an adjustment you want to remove.");
+            return;
+        }
+        if (getCurrentUser().removeBudgetAdjustmentByName(title))
             navigate("/home");
+        else {
+            setHeaderText(title + " does not exist!");
+        }
+
 
     }
     const changeGoal = (event) => {
@@ -73,8 +88,7 @@ export default function BalancePage() {
             <Navbar />
             <div className="loan-subheader">
                 <h2>
-                    Welcome to Your Balance Adjustment
-                </h2>
+                    Welcome to Your Balance Adjustment           </h2>
             </div>
 
             <div className="subTitle">
@@ -121,7 +135,7 @@ export default function BalancePage() {
 
             </div>
             <hr></hr>
-
+            <h3 style={{ textAlign: "center", color: 'red', margin: 0 }}>{headerText}</h3>
             <div className="balance-page-section">
                 <div className="balance-page-input">
                     <div>
