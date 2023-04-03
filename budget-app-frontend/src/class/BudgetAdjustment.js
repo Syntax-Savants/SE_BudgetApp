@@ -11,10 +11,10 @@ export class BudgetAdjustment {
         date = new Date().getMonth()
         this.amount = amount;
         this.type = type;
-        if (this.type === 0) {
+        if (this.type == 0) {
             this.color = PLANNED_COLOR;
 
-        } else if (this.type === 1) {
+        } else {
             this.color = UNPLANNED_COLOR;
         }
 
