@@ -27,8 +27,33 @@ export default function BalancePage() {
         const incomeOrExpense = event.target.expenseOrIncome.value;
         const amount = event.target.amt.value;
         const budgetAdjustment = new BudgetAdjustment(event.target.name.value, type, date, incomeOrExpense * amount);
+        const doReoccur = event.target.reoccuringTime.value;
+
         getCurrentUser().addBudgetAdjustment(budgetAdjustment);
 
+
+        if (doReoccur != 0) {
+            const reoccurAmt = event.target.reoccurAmt.value;
+            let newDate = date;
+
+            for (var i = 0; i < reoccurAmt; i++) {
+
+                if (doReoccur == 1) {
+                    newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 7);
+
+                } else if (doReoccur == 2) {
+                    newDate = new Date(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate());
+
+
+                } else {
+                    newDate = new Date(newDate.getFullYear() + 1, newDate.getMonth(), newDate.getDate());
+
+                }
+
+                getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(event.target.name.value, type, newDate, incomeOrExpense * amount));
+
+            }
+        }
         navigate("/home");
     }
 
@@ -126,8 +151,16 @@ export default function BalancePage() {
                             <DatePicker selected={date}
                                 onChange={(date) => setDate(date)} />
                             <label>Reoccurring?</label>
-                            <input type={"text"} />
+                            <div>
+                                <input style={{ width: '2rem' }} id="reoccurAmt" type={"number"} />
+                                <select id="reoccuringTime">
+                                    <option value={"0"}>Never</option>
+                                    <option value={"1"}>Weekly</option>
+                                    <option value={"2"}>Montly</option>
+                                    <option value={"3"}>Yearly</option>
 
+                                </select >
+                            </div>
 
                             <select id="isPlanned">
                                 <option value={"0"}>Planned</option>
