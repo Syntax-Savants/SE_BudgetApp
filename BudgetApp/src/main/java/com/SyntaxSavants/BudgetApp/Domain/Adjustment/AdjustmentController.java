@@ -1,7 +1,9 @@
 package com.SyntaxSavants.BudgetApp.Domain.Adjustment;
 
 import com.SyntaxSavants.BudgetApp.Domain.User.User;
+import com.SyntaxSavants.BudgetApp.Repository.AdjustmentRepo;
 import com.SyntaxSavants.BudgetApp.Repository.AdjustmentRepository;
+import com.SyntaxSavants.BudgetApp.Service.AdjustmentService;
 import com.SyntaxSavants.BudgetApp.Service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,23 +19,35 @@ import java.util.Random;
 public class AdjustmentController {
 
     @Autowired
-    private AdjustmentRepository adjustmentRepository;
+    private AdjustmentRepo adjustmentRepo;
+
+    private AdjustmentService adjustmentService;
 
     @Autowired
     private AuthenticationService authentication;
 
-    @GetMapping("/currentBalance")
+    @PostMapping("/balance")
+    public Adjustment postDetails(@RequestBody Adjustment adjustment){
+
+        return adjustmentService.saveAdjustment(adjustment);
+    }
+
+    @GetMapping("/balance")
     @CrossOrigin
-    public ResponseEntity<?> getCurrentBalance(@RequestHeader String auth) throws SQLException {
+    public ResponseEntity<List<Adjustment>> getAdjustmentsByName(@RequestHeader String auth) throws SQLException{
+        String[] str = auth.split(":");
+        String user = str[0];
         Optional<User> userOptional = authentication.authenticateUser(auth);
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
-        User user = userOptional.get();
-        return null;    //in progress
-
+        return new ResponseEntity<List<Adjustment>>(adjustmentRepo.findByUsername(user), HttpStatus.OK);
     }
-    @GetMapping("/balance")
+
+
+
+
+    /*@GetMapping("/balance")
     @CrossOrigin
     public ResponseEntity<List<Adjustment>> getAdjustments(@RequestHeader String auth) throws SQLException {
         Optional<User> userOptional = authentication.authenticateUser(auth);
@@ -42,13 +56,13 @@ public class AdjustmentController {
         }
         User user = userOptional.get();
 
-        //return new ResponseEntity<>(user.getAdjustments(), HttpStatus.OK);
-        return null;
-    }
+        return new ResponseEntity<>(user.getAdjustments(), HttpStatus.OK);
 
-    @PostMapping("/balance")
+    }*/
+
+    /*@PostMapping("/balance")
     @CrossOrigin
-    public ResponseEntity<List<Adjustment>> createAdjustment(@RequestBody CreateAdjustmentRequest request, @RequestHeader String auth) throws SQLException{
+    public ResponseEntity<List<Adjustment>> createAdjustment(@RequestBody Adjustment request, @RequestHeader String auth) throws SQLException{
 
         Optional<User> userOptional = authentication.authenticateUser(auth);
         if (userOptional.isEmpty()) {
@@ -63,12 +77,12 @@ public class AdjustmentController {
         t.setPlanned(request.getPlanned());
         t.setUser_username(userOptional.get().getUsername());     //changed to fit change to string data type
 
-        if(adjustmentRepository.createAdjustment(t.getId(), t.getDescription(), t.getUser_username(),  t.getDate(), t.getAmt(), t.getPlanned())) {
+        if(adjustmentRepository.Adjustment(t.getId(), t.getDescription(), t.getUser_username(),  t.getDate(), t.getAmt(), t.getPlanned())) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
         //return null;
-    }
+    }*/
 
 }

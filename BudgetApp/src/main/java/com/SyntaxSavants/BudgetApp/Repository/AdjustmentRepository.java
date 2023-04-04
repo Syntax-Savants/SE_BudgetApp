@@ -1,4 +1,6 @@
+
 package com.SyntaxSavants.BudgetApp.Repository;
+
 
 import com.SyntaxSavants.BudgetApp.Domain.Adjustment.Adjustment;
 import com.SyntaxSavants.BudgetApp.Domain.User.User;
@@ -10,8 +12,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.Date;
 import java.time.*;
-@Repository
-public class AdjustmentRepository {
+//@Repository
+public class AdjustmentRepository {/*
 
     Statement statement;
     public AdjustmentRepository() throws ClassNotFoundException, SQLException {
@@ -65,7 +67,7 @@ public class AdjustmentRepository {
     public boolean createAdjustment(Long id, String desc, String user, Date date, Float amt, int planned) throws SQLException{
         if (getOneAdjustment(id.floatValue()).isPresent()) {
             return false;
-        };
+        }
 
         System.out.println("Java Date: " + date);              //for testing purposes
 
@@ -80,7 +82,7 @@ public class AdjustmentRepository {
         statement.executeUpdate(query);
         return true;
     }
-/*
+
     fetch("http://localhost:8080/balance", {
         method: "Post",
                 headers: {

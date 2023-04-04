@@ -1,6 +1,5 @@
 package com.SyntaxSavants.BudgetApp.Domain.Adjustment;
 
-import com.SyntaxSavants.BudgetApp.Domain.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +21,7 @@ public class Adjustment {
     /*@ManyToOne()                                                  //commented out
     @JoinColumn(name = "user_username", nullable = false)           //old way of using data type User
     private User user;*/
-    private String user_username;    //changed from User data type to String
+    private String username;    //changed from User data type to String
 
     private Date date;
 
