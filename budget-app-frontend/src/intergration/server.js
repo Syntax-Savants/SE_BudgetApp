@@ -57,39 +57,33 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     const date = serializeDate(adjustment.date);
     const value = adjustment.amount;
     const isPlanned = adjustment.type == 0 ? true : false;
+
     var request = new XMLHttpRequest();
 
+    request.open('POST', locate('balance'));
 
-    // request.open('GET', locate("balance"));
+    request.setRequestHeader('Content-Type', 'application/json');
 
-    // request.setRequestHeader('Content-Type', 'application/json');
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+        }
+    };
 
-    // request.onreadystatechange = function () {
-    //     if (this.readyState === 4) {
-    //         console.log('Status:', this.status);
-    //         console.log('Headers:', this.getAllResponseHeaders());
-    //         console.log('Body:', this.responseText);
-    //     }
-    // };
+    var body = {
+        'username': user.username,
+        'password': user.password,
 
-    // var body = {
-    //     'creds': {
-    //         'username': username,
-    //         'password': password
-    //     },
-    //     'startDate': '',
-    //     'endDate': '',
-    //     'adjustments': [
-    //         {
-    //             'planned': isPlanned,
-    //             'value': value,
-    //             'date': date
-    //         }
-    //     ]
-    // };
+        'planned': 0,
+        'amt': -50,
+        'date': '2023-04-16',
+        'description':"Test description",
 
-    // request.send(JSON.stringify(body));
+    };
 
+    request.send(JSON.stringify(body));
 }
 
 
@@ -121,7 +115,7 @@ export const getBudgetAdjustmentsfromServer = async (username, password) => {
             return null
         });
 
-        console.log("Response: " +response);
+    console.log("Response: " + response);
     if (response == null) {
         return null;
 

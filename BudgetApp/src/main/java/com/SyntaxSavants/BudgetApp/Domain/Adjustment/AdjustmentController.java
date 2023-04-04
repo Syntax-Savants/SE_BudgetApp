@@ -21,6 +21,7 @@ public class AdjustmentController {
     @Autowired
     private AdjustmentRepo adjustmentRepo;
 
+    @Autowired
     private AdjustmentService adjustmentService;
 
     @Autowired
@@ -29,7 +30,7 @@ public class AdjustmentController {
     @PostMapping("/balance")
     @CrossOrigin
     public Adjustment postDetails(@RequestBody Adjustment adjustment){
-
+        System.out.println("Adjustment "  + adjustment);
         return adjustmentService.saveAdjustment(adjustment);
     }
 
