@@ -93,6 +93,40 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
 }
 
 
+
+export const getBudgetAdjustmentsfromServer = async (username, password) => {
+    var header = `${username}:${password}`;
+    var response = await fetch(locate("balance"), {
+        headers: {
+            "auth":
+                header
+        }
+    })
+        .then(data => {
+
+            if (data.status === 401) {
+                console.log("");
+
+                return null;
+
+            }
+            return data.json();
+        })
+        .then(adjustments => {
+
+            return adjustments;
+
+        }).catch(err => {
+
+            return null
+        });
+
+        console.log("Response: " +response);
+    if (response == null) {
+        return null;
+
+    }
+}
 export const Login = async (username, password) => {
     if (bypassServer) {
 

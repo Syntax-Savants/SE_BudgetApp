@@ -67,7 +67,7 @@ export default function BalancePage() {
         event.preventDefault();
         const title = event.target.removeText.value;
         if (!title) {
-            setHeaderText("Please enter an a you want to remove.");
+            setHeaderText("Please enter an adjustment you want to remove.");
             return;
         }
         if (getCurrentUser().removeBudgetAdjustmentByName(title))
