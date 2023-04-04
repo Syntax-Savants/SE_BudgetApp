@@ -27,6 +27,7 @@ public class AdjustmentController {
     private AuthenticationService authentication;
 
     @PostMapping("/balance")
+    @CrossOrigin
     public Adjustment postDetails(@RequestBody Adjustment adjustment){
 
         return adjustmentService.saveAdjustment(adjustment);
