@@ -1,5 +1,4 @@
 import { addBudgetAdjustmentToServer } from "../intergration/server";
-import { BudgetAdjustment } from "./BudgetAdjustment";
 export class User {
     constructor(username, password, firstName, lastName, budgetAdjustments = []) {
         this.username = username;

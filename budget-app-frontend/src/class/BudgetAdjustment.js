@@ -1,6 +1,6 @@
 const PLANNED_COLOR = 'rgb(6, 170, 218)';
 const UNPLANNED_COLOR = '#52B302';
-const OTHER_COLOR = '#33826A';
+//const OTHER_COLOR = '#33826A';
 
 
 export class BudgetAdjustment {

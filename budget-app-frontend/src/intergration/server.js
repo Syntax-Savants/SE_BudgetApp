@@ -33,14 +33,6 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
     request.setRequestHeader('Content-Type', 'application/json');
 
-    request.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            console.log('Status:', this.status);
-            console.log('Headers:', this.getAllResponseHeaders());
-            console.log('Body:', this.responseText);
-        }
-    };
-
     var body = {
         'username': username,
         'first_name': firstName,
@@ -65,23 +57,14 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
 
     request.setRequestHeader('Content-Type', 'application/json');
 
-    request.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            console.log('Status:', this.status);
-            console.log('Headers:', this.getAllResponseHeaders());
-            console.log('Body:', this.responseText);
-        }
-    };
 
     var body = {
         'username': username,
         'password': password,
-
         'planned': isPlanned,
         'amt': value,
         'date': date,
         'description': name,
-
     };
 
     request.send(JSON.stringify(body));
@@ -204,9 +187,6 @@ export function Logout() {
     localStorage.setItem('user', '');
 
 }
-
-
-
 
 function locate(mapping) {
 
