@@ -44,6 +44,22 @@ export const SignUp = async (username, password, firstName, lastName) => {
     request.send(JSON.stringify(body));
 };
 
+export const deleteAdjustmentFromServer = async (user, adjustment) => {
+    var request = new XMLHttpRequest();
+
+    request.open('DELETE', locate("balance"));
+
+    request.setRequestHeader('user', user.username);
+    request.setRequestHeader('description', adjustment.name);
+
+    var body = {
+        'user': user.username,
+        'description': adjustment.name
+    };
+
+    request.send(JSON.stringify(body));
+}
+
 export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     const username = user.username;
     const password = user.password;
@@ -65,6 +81,15 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
         'amt': value,
         'date': date,
         'description': name,
+    };
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+            adjustment.id = this.responseText.id;
+
+        }
     };
 
     request.send(JSON.stringify(body));
@@ -94,8 +119,9 @@ export const getBudgetAdjustmentsfromServer = async (username, password) => {
 
             adjustmentRes.forEach(a => {
 
-
-                adjustments.push(new BudgetAdjustment(a.description, a.planned, deserializeDate(a.date), a.amt));
+                let b = new BudgetAdjustment(a.description, a.planned, deserializeDate(a.date), a.amt);
+                b.id = a.id;
+                adjustments.push(b);
             });
             return adjustments;
 

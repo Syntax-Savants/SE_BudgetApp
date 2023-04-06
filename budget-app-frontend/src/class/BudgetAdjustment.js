@@ -19,7 +19,8 @@ export class BudgetAdjustment {
         }
 
         this.isIncome = amount < 0;
-    }
+        this.id = 0;
 
+    }
 
 }

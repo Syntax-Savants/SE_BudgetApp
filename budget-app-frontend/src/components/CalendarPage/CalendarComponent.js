@@ -25,6 +25,7 @@ function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) 
         budgetAdjustmentList.forEach(function (adjustment) {
 
             if (utils.isSameDay(date, adjustment.date)) {
+                console.log(adjustment.id);
                 adjustmentsForDay.push(adjustment);
             }
         });
