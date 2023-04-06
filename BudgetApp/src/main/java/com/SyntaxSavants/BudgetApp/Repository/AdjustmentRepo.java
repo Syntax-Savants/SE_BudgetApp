@@ -11,6 +11,7 @@ import java.util.List;
 public interface AdjustmentRepo extends JpaRepository<Adjustment, Long> {
 
     List<Adjustment> findByUsername(String name);
+    List<Adjustment>   findByUsernameAndDescription(String name, String Description);
 
 
 

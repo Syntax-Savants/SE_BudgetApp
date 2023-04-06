@@ -1,5 +1,4 @@
-import { addBudgetAdjustmentToServer } from "../intergration/server";
-import { BudgetAdjustment } from "./BudgetAdjustment";
+import { addBudgetAdjustmentToServer, deleteAdjustmentFromServer } from "../intergration/server";
 export class User {
     constructor(username, password, firstName, lastName, budgetAdjustments = []) {
         this.username = username;
@@ -64,12 +63,15 @@ export class User {
 
         for (let i = 0; i < this.budgetAdjustments.length; i++) {
             if (this.budgetAdjustments[i].name.toLowerCase().trim() === name.toLowerCase().trim()) {
+                deleteAdjustmentFromServer(this, this.budgetAdjustments[i])
+
                 this.budgetAdjustments.splice(i, 1);
                 this.save();
                 return true;
             }
 
         }
+
         return false;
         //TODO: Remove from server as well
     }

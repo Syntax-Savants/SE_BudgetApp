@@ -9,8 +9,6 @@ function LoginComponent() {
     const navigate = useNavigate();
     const [error, displayError] = useState("");
 
-    //
-
     Server.Ping().then(pingResponse => {
 
         if (!pingResponse)

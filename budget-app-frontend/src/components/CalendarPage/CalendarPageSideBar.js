@@ -1,20 +1,11 @@
 import "./CalendarPageSideBar.css"
 import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
-import { getBudgetAdjustmentsfromServer } from "../../intergration/server";
 import { getCurrentUser } from "../../Global"
-let showPlanned;
-let showUnplanned;
+
 export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments, showPlanned, showUnplanned }) {
 
     function addExpense() {
-
-        var username = getCurrentUser().username;
-        var password = getCurrentUser().password;
-
-        getBudgetAdjustmentsfromServer(username,password);
-        // getCurrentUser().addBudgetAdjustment(new BudgetAdjustment(
-        //     "test", 0, testDate, 50));
 
     }
 

@@ -78,10 +78,24 @@ export function formatMoney(num) {
 }
 
 export function serializeDate(date) {
+    //2023-04-16
 
-    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1 >= 10 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
+    const day = date.getDate() >= 10 ? (date.getDate()) : '0' + (date.getDate());
+    return year + '-' + month + '-' + day;
+    // return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 }
 
+
+export function deserializeDate(dateAndTime) {
+    const date = dateAndTime.split("T")[0];
+    const day = date.split("-")[2];
+    const year = date.split("-")[0];
+    const month = date.split("-")[1];
+
+    return new Date(year, Number(month) - 1, day);
+}
 export function dayRemainingInMonth(date) {
 
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();

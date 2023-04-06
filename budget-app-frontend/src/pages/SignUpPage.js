@@ -1,4 +1,3 @@
-import DefaultPage from "./DefaultPage";
 import * as Server from "../intergration/server"
 import { useNavigate } from 'react-router-dom';
 

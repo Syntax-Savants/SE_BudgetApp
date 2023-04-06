@@ -1,7 +1,8 @@
 import { bypassServer, setCurrentUser } from '../Global.js';
 import { User } from "../class/User";
 import Cookies from 'universal-cookie';
-import { serializeDate } from '../utils/Utils.js';
+import { serializeDate, deserializeDate } from '../utils/Utils.js';
+import { BudgetAdjustment } from "../class/BudgetAdjustment"
 const SERVER_ADRESS = "http://localhost:8080";
 const cookies = new Cookies();
 
@@ -32,14 +33,6 @@ export const SignUp = async (username, password, firstName, lastName) => {
 
     request.setRequestHeader('Content-Type', 'application/json');
 
-    request.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            console.log('Status:', this.status);
-            console.log('Headers:', this.getAllResponseHeaders());
-            console.log('Body:', this.responseText);
-        }
-    };
-
     var body = {
         'username': username,
         'first_name': firstName,
@@ -51,51 +44,63 @@ export const SignUp = async (username, password, firstName, lastName) => {
     request.send(JSON.stringify(body));
 };
 
+export const deleteAdjustmentFromServer = async (user, adjustment) => {
+    var request = new XMLHttpRequest();
+
+    request.open('DELETE', locate("balance"));
+
+    request.setRequestHeader('user', user.username);
+    request.setRequestHeader('description', adjustment.name);
+
+    var body = {
+        'user': user.username,
+        'description': adjustment.name
+    };
+
+    request.send(JSON.stringify(body));
+}
+
 export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     const username = user.username;
     const password = user.password;
     const date = serializeDate(adjustment.date);
     const value = adjustment.amount;
-    const isPlanned = adjustment.type == 0 ? true : false;
+    const isPlanned = adjustment.type;
+    const name = adjustment.name;
     var request = new XMLHttpRequest();
 
+    request.open('POST', locate('balance'));
 
-    // request.open('GET', locate("balance"));
+    request.setRequestHeader('Content-Type', 'application/json');
 
-    // request.setRequestHeader('Content-Type', 'application/json');
 
-    // request.onreadystatechange = function () {
-    //     if (this.readyState === 4) {
-    //         console.log('Status:', this.status);
-    //         console.log('Headers:', this.getAllResponseHeaders());
-    //         console.log('Body:', this.responseText);
-    //     }
-    // };
+    var body = {
+        'username': username,
+        'password': password,
+        'planned': isPlanned,
+        'amt': value,
+        'date': date,
+        'description': name,
+    };
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+            adjustment.id = this.responseText.id;
 
-    // var body = {
-    //     'creds': {
-    //         'username': username,
-    //         'password': password
-    //     },
-    //     'startDate': '',
-    //     'endDate': '',
-    //     'adjustments': [
-    //         {
-    //             'planned': isPlanned,
-    //             'value': value,
-    //             'date': date
-    //         }
-    //     ]
-    // };
+        }
+    };
 
-    // request.send(JSON.stringify(body));
-
+    request.send(JSON.stringify(body));
 }
 
 
 
 export const getBudgetAdjustmentsfromServer = async (username, password) => {
     var header = `${username}:${password}`;
+    var adjustments = [];
+
     var response = await fetch(locate("balance"), {
         headers: {
             "auth":
@@ -105,15 +110,19 @@ export const getBudgetAdjustmentsfromServer = async (username, password) => {
         .then(data => {
 
             if (data.status === 401) {
-                console.log("");
-
                 return null;
 
             }
             return data.json();
         })
-        .then(adjustments => {
+        .then(adjustmentRes => {
 
+            adjustmentRes.forEach(a => {
+
+                let b = new BudgetAdjustment(a.description, a.planned, deserializeDate(a.date), a.amt);
+                b.id = a.id;
+                adjustments.push(b);
+            });
             return adjustments;
 
         }).catch(err => {
@@ -121,11 +130,13 @@ export const getBudgetAdjustmentsfromServer = async (username, password) => {
             return null
         });
 
-        console.log("Response: " +response);
-    if (response == null) {
-        return null;
+    return adjustments;
 
-    }
+    // console.log("Response: " + adjustments[0].name);
+    // if (response == null) {
+    //     return null;
+
+    // }
 }
 export const Login = async (username, password) => {
     if (bypassServer) {
@@ -158,6 +169,8 @@ export const Login = async (username, password) => {
 
 
 export async function getUserFromHeader(header) {
+
+    var budgetAdjustments = [];
     var response = await fetch(locate("user"), {
         headers: {
             "auth":
@@ -175,7 +188,6 @@ export async function getUserFromHeader(header) {
             return data.json();
         })
         .then(user => {
-
             return user;
 
         }).catch(err => {
@@ -187,7 +199,9 @@ export async function getUserFromHeader(header) {
 
     }
 
-    return new User(response.username, response.password, response.first_name, response.last_name);
+    budgetAdjustments = await getBudgetAdjustmentsfromServer(response.username, response.password);
+
+    return new User(response.username, response.password, response.first_name, response.last_name, budgetAdjustments);
 
 
 }
@@ -199,9 +213,6 @@ export function Logout() {
     localStorage.setItem('user', '');
 
 }
-
-
-
 
 function locate(mapping) {
 

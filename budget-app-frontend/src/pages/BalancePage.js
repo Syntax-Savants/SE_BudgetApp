@@ -1,8 +1,6 @@
 
 import Navbar from "../components/Navbar";
 import DatePicker from "react-datepicker";
-import Checkbox from "../components/ui/CheckBox";
-import DefaultPage from "./DefaultPage";
 import scale from "../img/scale.png";
 import money from "../img/money.png";
 import x from "../img/x.png";

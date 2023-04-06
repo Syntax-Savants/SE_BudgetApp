@@ -21,6 +21,7 @@ public class AdjustmentController {
     @Autowired
     private AdjustmentRepo adjustmentRepo;
 
+    @Autowired
     private AdjustmentService adjustmentService;
 
     @Autowired
@@ -29,8 +30,8 @@ public class AdjustmentController {
     @PostMapping("/balance")
     @CrossOrigin
     public Adjustment postDetails(@RequestBody Adjustment adjustment){
-
-        return adjustmentService.saveAdjustment(adjustment);
+        System.out.println("Adjustment "  + adjustment);
+     return adjustmentService.saveAdjustment(adjustment);
     }
 
     @GetMapping("/balance")
@@ -47,6 +48,16 @@ public class AdjustmentController {
 
 
 
+    @DeleteMapping("/balance")
+    @CrossOrigin
+    public void deleteAdjustment(@RequestHeader(value = "user") String user, @RequestHeader(value = "description")String description){
+
+        List<Adjustment>   adjustmentListForUser = adjustmentRepo.findByUsernameAndDescription(user,description);
+
+        adjustmentRepo.deleteAll(adjustmentListForUser);
+
+
+    }
 
     /*@GetMapping("/balance")
     @CrossOrigin

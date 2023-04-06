@@ -19,7 +19,9 @@ function Navbar({ logged = true, pageID, extraElement }) {
                     <li><Link to="/balance">Balance Adjustments </Link></li>
 
                     <li ><Link to="/loan">Personal Loan Estimator</Link></li>
-                    <li><Link to="/">Logout</Link></li>
+                    <li><Link onClick={() => {
+                        Logout();
+                    }} to="/">Logout</Link></li>
                 </ul>
             </nav>
         );
