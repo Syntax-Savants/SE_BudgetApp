@@ -46,6 +46,13 @@ public class AdjustmentController {
         return new ResponseEntity<List<Adjustment>>(adjustmentRepo.findByUsername(user), HttpStatus.OK);
     }
 
+    @DeleteMapping("/balance")
+    @CrossOrigin
+    public void deleteAdjustment(@PathVariable Long id){
+        Adjustment adjustment = adjustmentRepo.getReferenceById(id);
+        adjustmentRepo.delete(adjustment);
+    }
+
 
 
 
