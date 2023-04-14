@@ -96,9 +96,8 @@ export function deserializeDate(dateAndTime) {
 
     return new Date(year, Number(month) - 1, day);
 }
-export function dayRemainingInMonth(date) {
+export function lastDayOfMonth(date) {
 
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    return lastDayOfMonth - date.getDate();
+    return lastDayOfMonth;
 }
-
