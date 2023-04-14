@@ -2,11 +2,13 @@ import "./CalendarPageSideBar.css"
 import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
 import { getCurrentUser } from "../../Global"
+import { useNavigate } from 'react-router-dom';
 
 export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments, showPlanned, showUnplanned }) {
+    const navigate = useNavigate();
 
     function addExpense() {
-
+        navigate("/balance");
     }
 
     function checkPlannedExpenses(value) {
@@ -30,7 +32,7 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
                 <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses(currentMonth))} id={"Monthly expense"} label={"Expenses this month: "} style={{ display: 'block', margin: 'auto', backgroundColor: "#f6bb1d", fontWeight: 'bold' }} />
                 <div style={{ display: 'inline-block' }}>
 
-                    <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoalPlusIncome())} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
+                    <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoalPlusIncome(currentMonth))} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
 
                     <SideBarInput id="You are" display={getCurrentUser().getOverUnder(currentMonth)} style={{ margin: '0 0px 0 0', fontWeight: 'bold' }} />
                 </div>
@@ -48,6 +50,15 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
 };
 
 
+
+function spendForToday(date) {
+    const lastDayOfMonth = Utils.lastDayOfMonth(date);
+    const day = date.getDate();
+    const startingBudget = 1000;
+
+    return (day / lastDayOfMonth) * getCurrentUser().monthlyGoal + startingBudget;
+
+}
 
 function SideBarInput({ display, label, style }) {
 

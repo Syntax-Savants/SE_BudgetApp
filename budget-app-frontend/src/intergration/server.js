@@ -120,7 +120,6 @@ export const getBudgetAdjustmentsfromServer = async (username, password) => {
             adjustmentRes.forEach(a => {
 
                 let b = new BudgetAdjustment(a.description, a.planned, deserializeDate(a.date), a.amt);
-                b.id = a.id;
                 adjustments.push(b);
             });
             return adjustments;
@@ -171,6 +170,8 @@ export const Login = async (username, password) => {
 export async function getUserFromHeader(header) {
 
     var budgetAdjustments = [];
+
+    console.log(typeof (budgetAdjustments));
     var response = await fetch(locate("user"), {
         headers: {
             "auth":

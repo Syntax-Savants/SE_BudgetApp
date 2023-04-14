@@ -5,7 +5,7 @@ import "./Calendar.css"
 import * as utils from '../../utils/Utils.js';
 
 //const testDate = new Date(2023, 1, 15);
-function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) {
+function CalendarComponent({ setText, budgetAdjustments, activeDate, changeActiveDate }) {
     var budgetAdjustmentList;
 
     budgetAdjustmentList = budgetAdjustments;
@@ -25,7 +25,6 @@ function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) 
         budgetAdjustmentList.forEach(function (adjustment) {
 
             if (utils.isSameDay(date, adjustment.date)) {
-                console.log(adjustment.id);
                 adjustmentsForDay.push(adjustment);
             }
         });
@@ -33,7 +32,9 @@ function CalendarComponent({ budgetAdjustments, activeDate, changeActiveDate }) 
         returnValue = adjustmentsForDay.map(
             (budgetAdjustment) => {
                 return (
-                    <li key={budgetAdjustment.name} className='budget-adjustment' style={{ backgroundColor: budgetAdjustment.color }}><p>{budgetAdjustment.name}</p></li >
+                    <li onClick={() => {
+                        setText("The amount for the adjustment " + budgetAdjustment.name + " is " + utils.formatMoney(budgetAdjustment.amount));
+                    }} key={budgetAdjustment.name} className='budget-adjustment' style={{ backgroundColor: budgetAdjustment.color }}><p>{budgetAdjustment.name}</p></li >
                 )
             }
         )
