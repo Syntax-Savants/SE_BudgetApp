@@ -61,6 +61,7 @@ export default function BalancePage() {
         navigate("/home");
     }
 
+
     const removeAdjustment = (event) => {
         event.preventDefault();
         const title = event.target.removeText.value;
@@ -76,12 +77,22 @@ export default function BalancePage() {
 
 
     }
+
     const changeGoal = (event) => {
         event.preventDefault();
         if (event.target.goal.value)
             getCurrentUser().monthlyGoal = event.target.goal.value;
         navigate("/home");
     }
+
+
+    const changeBalance = (event) => {
+        event.preventDefault();
+        if (event.target.goal.value)
+            getCurrentUser().balance = event.target.goal.value;
+        navigate("/home");
+    }
+
     return (
         <div>
             <Navbar />
@@ -144,6 +155,14 @@ export default function BalancePage() {
 
                             <br></br>
                             <input placeholder={"$" + getCurrentUser().monthlyGoal} id='goal' type={"text"} />
+                            <input type={"Submit"} defaultValue="Enter" className="enterBalance" />
+                        </form>
+
+                        <form style={{ display: "block", marginTop: "30px" }} onSubmit={changeBalance}>
+                            <label> Input your balance:</label>
+
+                            <br></br>
+                            <input placeholder={"$" + getCurrentUser().balance} id='goal' type={"text"} />
                             <input type={"Submit"} defaultValue="Enter" className="enterBalance" />
                         </form>
                     </div>
