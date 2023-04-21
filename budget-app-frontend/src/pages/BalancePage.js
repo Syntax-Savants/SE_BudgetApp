@@ -178,7 +178,7 @@ export default function BalancePage() {
                             <label>Title:</label>
                             <input placeholder="Rent, School etc..." id="name" type={"text"} />
                             <label>Amount:</label>
-                            <input placeholder="ex. 1000" id="amt" type={"number"} />
+                            <input min={0} placeholder="ex. 1000" id="amt" type={"number"} />
                             <label>Date:</label>
                             <DatePicker selected={date}
                                 onChange={(date) => setDate(date)} />
