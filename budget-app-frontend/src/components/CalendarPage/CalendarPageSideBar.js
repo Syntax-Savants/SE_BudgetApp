@@ -28,8 +28,13 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
     return (
         <div className="CSideBar">
             <div>
+                <div style={{ display: 'block', marginBottom: '10px' }}>
 
-                <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses(currentMonth))} id={"Monthly expense"} label={"Expenses this month: "} style={{ display: 'block', margin: 'auto', backgroundColor: "#f6bb1d", fontWeight: 'bold' }} />
+                    <SideBarInput display={Utils.formatMoney(getCurrentUser().getExpenses(currentMonth))} id={"Monthly expense"} label={"Expenses this month: "} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
+                    <SideBarInput id="You are" label={"Target Balance For Today"} display={spendForToday(new Date())} style={{ margin: '0 0px 0 0', fontWeight: 'bold' }} />
+
+                </div>
+
                 <div style={{ display: 'inline-block' }}>
 
                     <SideBarInput id="My Goal is" label="Monthly budget is: " display={Utils.formatMoney(getCurrentUser().monthlyGoalPlusIncome(currentMonth))} style={{ backgroundColor: "#33826A", margin: '0 10px 0 0', fontWeight: 'bold' }} />
@@ -54,9 +59,9 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
 function spendForToday(date) {
     const lastDayOfMonth = Utils.lastDayOfMonth(date);
     const day = date.getDate();
-    const startingBudget = 1000;
+    const startingBudget = getCurrentUser().balance;
 
-    return (day / lastDayOfMonth) * getCurrentUser().monthlyGoal + startingBudget;
+    return Utils.formatMoney( (day / lastDayOfMonth) * getCurrentUser().monthlyGoal);
 
 }
 
