@@ -7,6 +7,7 @@ export class User {
         this.lastName = lastName;
         this.budgetAdjustments = budgetAdjustments;
         this.monthlyGoal = 1000;
+        this.balance = 5000;
     }
 
     getExpenses(month = new Date().getMonth()) {

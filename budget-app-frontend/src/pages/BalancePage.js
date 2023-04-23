@@ -61,6 +61,7 @@ export default function BalancePage() {
         navigate("/home");
     }
 
+
     const removeAdjustment = (event) => {
         event.preventDefault();
         const title = event.target.removeText.value;
@@ -76,12 +77,22 @@ export default function BalancePage() {
 
 
     }
+
     const changeGoal = (event) => {
         event.preventDefault();
         if (event.target.goal.value)
             getCurrentUser().monthlyGoal = event.target.goal.value;
         navigate("/home");
     }
+
+
+    const changeBalance = (event) => {
+        event.preventDefault();
+        if (event.target.goal.value)
+            getCurrentUser().balance = event.target.goal.value;
+        navigate("/home");
+    }
+
     return (
         <div>
             <Navbar />
@@ -146,6 +157,14 @@ export default function BalancePage() {
                             <input placeholder={"$" + getCurrentUser().monthlyGoal} id='goal' type={"text"} />
                             <input type={"Submit"} defaultValue="Enter" className="enterBalance" />
                         </form>
+
+                        <form style={{ display: "block", marginTop: "30px" }} onSubmit={changeBalance}>
+                            <label> Input your balance:</label>
+
+                            <br></br>
+                            <input placeholder={"$" + getCurrentUser().balance} id='goal' type={"text"} />
+                            <input type={"Submit"} defaultValue="Enter" className="enterBalance" />
+                        </form>
                     </div>
                 </div >
 
@@ -159,7 +178,7 @@ export default function BalancePage() {
                             <label>Title:</label>
                             <input placeholder="Rent, School etc..." id="name" type={"text"} />
                             <label>Amount:</label>
-                            <input placeholder="ex. 1000" id="amt" type={"number"} />
+                            <input min={0} placeholder="ex. 1000" id="amt" type={"number"} />
                             <label>Date:</label>
                             <DatePicker selected={date}
                                 onChange={(date) => setDate(date)} />

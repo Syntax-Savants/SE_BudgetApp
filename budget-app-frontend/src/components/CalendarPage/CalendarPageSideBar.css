@@ -33,9 +33,9 @@
 .CSideBar-input {
     text-align: center;
     display: inline-block;
-    border-radius: 100%;
+    border-radius: 20%;
     padding: 10px;
-    background-color: #06AADA;
+    background-color: #33826A;
     width: 160px;
     height: 160px;
     transition: 0.3s;

@@ -115,13 +115,15 @@
     color: rgba(157, 157, 157, 0.5);
     background-color: rgb(216, 216, 216);
 }
-.ba-list{
+
+.ba-list {
     margin: 20% 0;
     padding: 0;
     overflow: auto !important;
     height: 70%;
 
 }
+
 .budget-adjustment {
     padding: 0.02px 6px;
     color: white;
@@ -134,3 +136,7 @@
     font-size: 12px;
 }
 
+.budget-adjustment:hover {
+    color: red;
+    font-weight: bold;
+}
