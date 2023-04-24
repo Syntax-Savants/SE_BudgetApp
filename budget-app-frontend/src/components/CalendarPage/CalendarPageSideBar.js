@@ -8,9 +8,8 @@ export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments
     const navigate = useNavigate();
 
     function addExpense() {
-        setUserBalance(getCurrentUser().username, 10);
-        setUserSavingsGoal(getCurrentUser().username, 20);
-        //        navigate("/balance");
+
+            navigate("/balance");
     }
 
     function checkPlannedExpenses(value) {

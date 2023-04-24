@@ -85,9 +85,7 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     };
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
-            console.log('Status:', this.status);
-            console.log('Headers:', this.getAllResponseHeaders());
-            console.log('Body:', this.responseText);
+            
             adjustment.id = this.responseText.id;
 
         }
@@ -240,7 +238,6 @@ export async function getUserFromHeader(header) {
     }
 
 
-    console.log(response);
     budgetAdjustments = await getBudgetAdjustmentsfromServer(response.username, response.password);
 
     return new User(response.username, response.password, response.first_name, response.last_name, response.savings_goal, response.balance, budgetAdjustments);
