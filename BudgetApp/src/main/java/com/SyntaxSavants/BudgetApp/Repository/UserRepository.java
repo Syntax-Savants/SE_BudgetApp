@@ -16,7 +16,7 @@ public class UserRepository {
             return false;
         };
 
-        String query = String.format("insert into user values('%s', '%s', '%s', '%s');", user, first, last, pw);
+        String query = String.format("insert into user values('%s', '%s', '%s', '%s',1000,1000);", user, first, last, pw);
         statement.executeUpdate(query);
         return true;
     }
