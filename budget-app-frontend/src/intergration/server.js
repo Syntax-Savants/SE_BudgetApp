@@ -117,6 +117,25 @@ export const setUserBalance = async (username, value) => {
 
 }
 
+export const setUserSavingsGoal = async (username, value) => {
+
+    var body = {
+        "username": username,
+        "balnce": undefined,
+        "savings_goal": value
+    }
+
+    body = JSON.stringify(body);
+    var response = await fetch(locate("user/savingsGoal"), {
+        method: "put", headers: {
+            'Content-Type': 'application/json'
+
+        },
+        body: body
+    });
+
+}
+
 
 export const getBudgetAdjustmentsfromServer = async (username, password) => {
     var header = `${username}:${password}`;
@@ -192,7 +211,6 @@ export async function getUserFromHeader(header) {
 
     var budgetAdjustments = [];
 
-    console.log(typeof (budgetAdjustments));
     var response = await fetch(locate("user"), {
         headers: {
             "auth":
@@ -221,9 +239,11 @@ export async function getUserFromHeader(header) {
 
     }
 
+
+    console.log(response);
     budgetAdjustments = await getBudgetAdjustmentsfromServer(response.username, response.password);
 
-    return new User(response.username, response.password, response.first_name, response.last_name, budgetAdjustments);
+    return new User(response.username, response.password, response.first_name, response.last_name, response.savings_goal, response.balance, budgetAdjustments);
 
 
 }

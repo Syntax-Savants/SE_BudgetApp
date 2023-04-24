@@ -1,14 +1,28 @@
-import { addBudgetAdjustmentToServer, deleteAdjustmentFromServer } from "../intergration/server";
+import { addBudgetAdjustmentToServer, deleteAdjustmentFromServer, setUserBalance, setUserSavingsGoal } from "../intergration/server";
 export class User {
-    constructor(username, password, firstName, lastName, budgetAdjustments = []) {
+    constructor(username, password, firstName, lastName, monthlyGoal, balance, budgetAdjustments = []) {
         this.username = username;
         this.firstName = firstName;
         this.password = password;
         this.lastName = lastName;
         this.budgetAdjustments = budgetAdjustments;
-        this.monthlyGoal = 1000;
-        this.balance = 5000;
+        this.monthlyGoal = monthlyGoal;
+        this.balance = balance;
     }
+
+    setMonthlyGoal(value) {
+        setUserSavingsGoal(this.username, value)
+        this.monthlyGoal = value;
+        this.save();
+    }
+
+    setBalance(value) {
+        setUserBalance(this.username, value)
+
+        this.balance = value;
+        this.save();
+    }
+
 
     getExpenses(month = new Date().getMonth()) {
         var expenseAmount = 0;

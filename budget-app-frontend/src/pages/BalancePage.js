@@ -80,8 +80,10 @@ export default function BalancePage() {
 
     const changeGoal = (event) => {
         event.preventDefault();
-        if (event.target.goal.value)
-            getCurrentUser().monthlyGoal = event.target.goal.value;
+        if (event.target.goal.value) {
+            getCurrentUser().setMonthlyGoal(event.target.goal.value);
+
+        }
         navigate("/home");
     }
 
@@ -89,7 +91,7 @@ export default function BalancePage() {
     const changeBalance = (event) => {
         event.preventDefault();
         if (event.target.goal.value)
-            getCurrentUser().balance = event.target.goal.value;
+            getCurrentUser().setBalance(event.target.goal.value);
         navigate("/home");
     }
 

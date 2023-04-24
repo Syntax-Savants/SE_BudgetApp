@@ -33,11 +33,12 @@ export function getCurrentUser() {
     if (loggedInUser) {
         const foundUser = JSON.parse(loggedInUser);
 
+        console.log(foundUser);
         var adjustments = [];
         foundUser.budgetAdjustments.forEach(a => {
             adjustments.push(new BudgetAdjustment(a.name, a.type, deserializeDate(a.date), a.amount));
         });
-        currentUser = new User(foundUser.username, foundUser.password, foundUser.firstName, foundUser.lastName, adjustments);
+        currentUser = new User(foundUser.username, foundUser.password, foundUser.firstName, foundUser.lastName, foundUser.monthlyGoal, foundUser.balance, adjustments);
 
         return currentUser;
     }
