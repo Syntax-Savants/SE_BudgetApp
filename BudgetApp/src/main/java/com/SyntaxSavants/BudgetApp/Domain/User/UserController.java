@@ -2,6 +2,7 @@ package com.SyntaxSavants.BudgetApp.Domain.User;
 
 import com.SyntaxSavants.BudgetApp.Repository.UserRepository;
 import com.SyntaxSavants.BudgetApp.Service.AuthenticationService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +57,23 @@ public class UserController {
 
 
     }
+
+    @PutMapping("/balance")
+    @CrossOrigin
+    public void updateBalance(@RequestHeader BalanceRequest request) throws SQLException{
+        userRepository.updateBalance(request);
+
+    }
+
+    @PutMapping("/balance")
+    @CrossOrigin
+    public void updateSavingsGoal(@RequestHeader BalanceRequest request) throws SQLException{
+        userRepository.updateSavingsGoal(request);
+    }
+
+
+
+
 
     /*public void createUser(String first, String last, String user, String pw) throws SQLException{
         statement.executeQuery("insert into user values('JohnDoe123', 'John', 'Doe', 'rootPW')");

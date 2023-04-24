@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdjustmentService {
@@ -24,7 +25,9 @@ public class AdjustmentService {
     public Adjustment saveAdjustment(Adjustment adjustment) {
         return adjustmentRepo.save(adjustment);
     }
+
 }
+
 
     /*@GetMapping("/{name}")
     public ResponseEntity<User> getAdjustmentByName(@PathVariable("name") String name) {

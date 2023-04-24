@@ -24,6 +24,8 @@ public class User {
 
     private String first_name;
     private String last_name;
+    private double savings_goal = 0;
+    private double balance = 0;
 
     //@OneToMany(fetch = FetchType.LAZY,  mappedBy = "user")
     //private List<Adjustment> adjustments;

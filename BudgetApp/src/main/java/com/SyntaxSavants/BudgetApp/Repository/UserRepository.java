@@ -1,5 +1,6 @@
 package com.SyntaxSavants.BudgetApp.Repository;
 
+import com.SyntaxSavants.BudgetApp.Domain.User.BalanceRequest;
 import com.SyntaxSavants.BudgetApp.Domain.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -43,8 +44,26 @@ public class UserRepository {
         return Optional.of(new User(resultSet.getString("username"),
                 resultSet.getString("password"),
                 resultSet.getString("first_name"),
-                resultSet.getString("last_name")));
+                resultSet.getString("last_name"),
+                resultSet.getDouble("balance"),
+                resultSet.getDouble("savings_goal")));
 
 
     }
+
+    public void updateBalance(BalanceRequest user) throws SQLException{
+        String username = user.getUsername();
+        double balance = user.getBalnce();
+
+        String query = "UPDATE db_syntaxsavants.user SET balance = '"+ balance + "' WHERE (username = '"+ username +"');";
+        statement.executeUpdate(query);
+    }
+
+    public void updateSavingsGoal(BalanceRequest user) throws SQLException{
+        String username = user.getUsername();
+        double savings_goal = user.getSavings_goal();
+        String query = "UPDATE db_syntaxsavants.user SET savings_goal = '"+ savings_goal + "' WHERE (username = '"+ username +"');";
+        statement.executeUpdate(query);
+    }
+
 }
