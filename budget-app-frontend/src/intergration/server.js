@@ -3,6 +3,7 @@ import { User } from "../class/User";
 import Cookies from 'universal-cookie';
 import { serializeDate, deserializeDate } from '../utils/Utils.js';
 import { BudgetAdjustment } from "../class/BudgetAdjustment"
+import { json } from 'react-router-dom';
 const SERVER_ADRESS = "http://localhost:8080";
 const cookies = new Cookies();
 
@@ -95,6 +96,26 @@ export const addBudgetAdjustmentToServer = async (user, adjustment) => {
     request.send(JSON.stringify(body));
 }
 
+
+
+export const setUserBalance = async (username, value) => {
+
+    var body = {
+        "username": username,
+        "balnce": value,
+        "savings_goal": undefined
+    }
+
+    body = JSON.stringify(body);
+    var response = await fetch(locate("user/balance"), {
+        method: "put", headers: {
+            'Content-Type': 'application/json'
+
+        },
+        body: body
+    });
+
+}
 
 
 export const getBudgetAdjustmentsfromServer = async (username, password) => {

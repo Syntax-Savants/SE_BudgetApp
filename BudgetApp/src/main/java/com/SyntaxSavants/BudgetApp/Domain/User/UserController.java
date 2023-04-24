@@ -31,6 +31,7 @@ public class UserController {
 
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
+
     @PostMapping("/user")
     @CrossOrigin
     public ResponseEntity<?> addNewUser(@RequestBody CreateUserRequest request) throws SQLException {
@@ -47,7 +48,7 @@ public class UserController {
         //createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword());
 
 
-        if(userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword())) {
+        if (userRepository.createUser(request.getFirst_name(), request.getLast_name(), request.getUsername(), request.getPassword())) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.FORBIDDEN);
@@ -58,16 +59,18 @@ public class UserController {
 
     }
 
-    @PutMapping("/balance")
+    @PutMapping("user/balance")
+
     @CrossOrigin
-    public void updateBalance(@RequestHeader BalanceRequest request) throws SQLException{
+    public void updateBalance(@RequestBody BalanceRequest request) throws SQLException {
+
         userRepository.updateBalance(request);
 
     }
 
-    @PutMapping("/balance")
+    @PutMapping("user/savingsGoal")
     @CrossOrigin
-    public void updateSavingsGoal(@RequestHeader BalanceRequest request) throws SQLException{
+    public void updateSavingsGoal(@RequestBody BalanceRequest request) throws SQLException {
         userRepository.updateSavingsGoal(request);
     }
 

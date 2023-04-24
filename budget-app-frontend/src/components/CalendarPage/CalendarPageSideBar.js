@@ -3,12 +3,14 @@ import Checkbox from "../ui/CheckBox";
 import * as Utils from "../../utils/Utils"
 import { getCurrentUser } from "../../Global"
 import { useNavigate } from 'react-router-dom';
-
+import { setUserBalance } from "../../intergration/server";
 export default function CalendarPageSideBar({ currentMonth, setBudgetAdjustments, showPlanned, showUnplanned }) {
     const navigate = useNavigate();
 
     function addExpense() {
-        navigate("/balance");
+        setUserBalance(getCurrentUser().username, 10);
+
+        //        navigate("/balance");
     }
 
     function checkPlannedExpenses(value) {
@@ -61,7 +63,7 @@ function spendForToday(date) {
     const day = date.getDate();
     const startingBudget = getCurrentUser().balance;
 
-    return Utils.formatMoney( (day / lastDayOfMonth) * getCurrentUser().monthlyGoal);
+    return Utils.formatMoney((day / lastDayOfMonth) * getCurrentUser().monthlyGoal);
 
 }
 
