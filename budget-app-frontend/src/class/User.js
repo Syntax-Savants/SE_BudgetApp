@@ -52,9 +52,9 @@ export class User {
         let expenseAmount = this.getExpenses(month);
 
         if (expenseAmount > this.monthlyGoal)
-            return "You are OVER your monthly budget goal for this month by $" + Math.abs(this.monthlyGoal - expenseAmount)
+            return "Warning. You are OVER your monthly budget for this month by $" + Math.abs(this.monthlyGoal - expenseAmount)
         else
-            return "You will have $" + (this.monthlyGoal - expenseAmount) + " of savings at the end of this month.";
+            return "You will have $" + (Number(this.monthlyGoalPlusIncome(month)) - expenseAmount) + " of savings at the end of this month.";
     }
 
 

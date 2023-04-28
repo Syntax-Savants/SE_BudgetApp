@@ -152,7 +152,7 @@ export default function BalancePage() {
                 <div className="balance-page-input">
                     <div>
                         <form style={{ display: "block" }} onSubmit={changeGoal}>
-                            <label>Input Your Monthly Goal Balance:</label>
+                            <label>Input starting budget for this month:</label>
                             <label>This will carry over each month</label>
 
                             <br></br>
@@ -161,7 +161,7 @@ export default function BalancePage() {
                         </form>
 
                         <form style={{ display: "block", marginTop: "30px" }} onSubmit={changeBalance}>
-                            <label> Input your balance:</label>
+                            <label> Input how much you would like your account balance to increase each month:</label>
 
                             <br></br>
                             <input placeholder={"$" + getCurrentUser().balance} id='goal' type={"text"} />
